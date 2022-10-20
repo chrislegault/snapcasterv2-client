@@ -75,12 +75,13 @@ export default function SingleCardSearch() {
   ];
 
   const [results, setResults] = useAtom(singleCardResults);
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <div className='w-full md:w-1/2' >
-      <SearchBox />
+      <SearchBox setSearchTerm={setSearchTerm}/>
       <div className="p-2" />
-      {results && <SearchResultsInfo numResults={5} searchTerm={"Dockside Extortionist"}/>}
+      {results && <SearchResultsInfo numResults={results.length} searchTerm={searchTerm}/>}
 
       {/* map data into SearchRow components */}
       {results && results.map(cardData => (
