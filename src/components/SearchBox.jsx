@@ -84,7 +84,7 @@ export default function SearchBox({ setSearchTerm }) {
     setLoading(true);
 
     axios
-      .post('http://localhost:8000/search/single', {
+      .post('https://snapcasterv2-client.vercel.app/search/single', {
         cardName,
         websites: ['four01', 'gauntlet', 'fusion', 'houseofcards', 'kanatacg'],
       })
