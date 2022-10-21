@@ -7,9 +7,7 @@ export default function Home() {
   const hideWelcomeMessageValue = useAtomValue(hideWelcomeMessage);
   return (
     <>
-      {/* Home page content container */}
-      <div className="flex flex-col items-center">
-        { !hideWelcomeMessageValue && <h1 className="mt-5 text-2xl font-bold">Welcome to snapcaster</h1>}
+      <div className="max-w-lg mx-auto">
         <SingleCardSearch />
       </div>
     </>
