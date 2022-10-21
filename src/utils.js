@@ -2,6 +2,15 @@
 // export a util functions to be used in other files
 // This function sorts the search results
 
+const conditionSortOrder = {
+    "NM": 1,
+    "LP": 2,
+    "MP": 3,
+    "HP": 4,
+    "DMG": 5
+};
+
+
 export const sortResults = (results, sortBy, sortOrder) => {
   const sortedResults = [...results].sort((a, b) => {
     if (sortBy === 'price') {
@@ -12,8 +21,8 @@ export const sortResults = (results, sortBy, sortOrder) => {
         : b.website.localeCompare(a.website);
     } else if (sortBy === 'condition') {
       return sortOrder === 'asc'
-        ? a.condition.localeCompare(b.condition)
-        : b.condition.localeCompare(a.condition);
+        ? conditionSortOrder[a.condition] - conditionSortOrder[b.condition]
+        : conditionSortOrder[b.condition] - conditionSortOrder[a.condition];
     }
   });
   return sortedResults;

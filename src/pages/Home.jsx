@@ -9,7 +9,7 @@ export default function Home() {
     <>
       {/* Home page content container */}
       <div className="flex flex-col items-center">
-        { !hideWelcomeMessageValue && <h1 className="m-3 p-10 text-2xl font-bold">Welcome to snapcaster</h1>}
+        { !hideWelcomeMessageValue && <h1 className="mt-5 text-2xl font-bold">Welcome to snapcaster</h1>}
         <SingleCardSearch />
       </div>
     </>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAtom, useAtomValue } from 'jotai';
-import { singleCardResults, hideWelcomeMessage, sortedByAtom } from '../atoms';
+import { singleCardResults, hideWelcomeMessage, sortedByAtom, sortOrderAtom } from '../atoms';
 import axios from 'axios';
 import { sortResults } from '../utils';
 
@@ -80,6 +80,7 @@ export default function SearchBox({ setSearchTerm }) {
   ];
 
   const sortedBy = useAtomValue(sortedByAtom);
+  const sortOrder = useAtomValue(sortOrderAtom);
 
   const [cardName, setCardName] = React.useState('');
   const [results, setResults] = useAtom(singleCardResults);
@@ -98,7 +99,7 @@ export default function SearchBox({ setSearchTerm }) {
       })
       .then(res => {
         // filter res.data by sortedBy
-        const sortedResults = sortResults(res.data, sortedBy, "asc");
+        const sortedResults = sortResults(res.data, sortedBy, sortOrder);
         setResults(sortedResults);
         setHideWelcome(true);
         setSearchTerm(cardName);
@@ -137,7 +138,7 @@ export default function SearchBox({ setSearchTerm }) {
       {/* Loading spinner */}
       {/* Center the content horizontally */}
       {loading && (
-        <div role="status" className="flex justify-center mt-2">
+        <div role="status" className="flex justify-center mt-5">
           <svg
             className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
             viewBox="0 0 100 101"

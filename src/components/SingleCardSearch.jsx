@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
-import { useAtom } from 'jotai';
-import { singleCardResults } from '../atoms';
+import React, { useState } from 'react';
+import { useAtom, useAtomValue } from 'jotai';
+import { singleCardResults, listViewAtom } from '../atoms';
 import SearchBox from '../components/SearchBox';
 import SearchResultsInfo from '../components/SearchResultsInfo';
 import SearchRow from '../components/SearchRow';
+import SearchRowTable from './SearchRowTable';
 export default function SingleCardSearch() {
   const data = [
     {
@@ -76,17 +77,49 @@ export default function SingleCardSearch() {
 
   const [results, setResults] = useAtom(singleCardResults);
   const [searchTerm, setSearchTerm] = useState('');
+  const listView = useAtomValue(listViewAtom);
 
   return (
-    <div className='w-full md:w-1/2' >
-      <SearchBox setSearchTerm={setSearchTerm}/>
+    <div className="max-w-xl m-2">
+      <SearchBox setSearchTerm={setSearchTerm} />
       <div className="p-2" />
-      {results && <SearchResultsInfo numResults={results.length} searchTerm={searchTerm}/>}
+      {results && (
+        <SearchResultsInfo
+          numResults={results.length}
+          searchTerm={searchTerm}
+        />
+      )}
 
-      {/* map data into SearchRow components */}
-      {results && results.map(cardData => (
-        <SearchRow key={cardData.id} cardData={cardData} />
-      ))}
+
+
+      {results && 
+        (listView ? (
+          <table className="table-auto md:table-fixed w-full mt-3">
+            <thead>
+              <tr>
+                <th className="border border-slate-600 w-1/4">Card</th>
+                <th className="border border-slate-600 w-1/4">Website</th>
+                <th className="border border-slate-600 w-1/6">Condition</th>
+                <th className="border border-slate-600 w-1/6">Price</th>
+                <th className="border border-slate-600 w-1/6">Buy</th>
+              </tr>
+            </thead>
+            <tbody>
+            {results.map((cardData) => (
+              <SearchRowTable cardData={cardData} key={cardData.id}/>
+            ))}
+            </tbody>
+    
+          </table>
+        ) : (
+          <div>
+            {results.map((cardData) => (
+              <SearchRow cardData={cardData} key={cardData.id}/>
+            ))}
+          </div>
+        ))
+      }
+
     </div>
   );
 }
