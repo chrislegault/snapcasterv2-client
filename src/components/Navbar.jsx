@@ -10,7 +10,7 @@ export default function Navbar() {
         </Link>
 
         <div className="px-4" />
-
+{/* 
         <Link to="/" className="hover:text-red-400">
           Home
         </Link>
@@ -19,7 +19,7 @@ export default function Navbar() {
 
         <Link to="/multi-search" className="hover:text-red-400">
           Multi Search
-        </Link>
+        </Link> */}
       
         <div className="px-4" />
 
