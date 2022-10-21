@@ -1,6 +1,8 @@
 import React from 'react';
 import { useAtom } from 'jotai';
 import { singleCardResults } from '../atoms';
+import { sortResults } from '../utils';
+
 
 export default function SearchResultsInfo({ numResults, searchTerm }) {
   const [sortedBy, setSortedBy] = React.useState('price');
@@ -9,19 +11,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
 
   const handleSortByChange = e => {
     setSortedBy(e.target.value);
-    const sortedResults = [...results].sort((a, b) => {
-      if (e.target.value === 'price') {
-        return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
-      } else if (e.target.value === 'website') {
-        return sortOrder === 'asc'
-          ? a.website.localeCompare(b.website)
-          : b.website.localeCompare(a.website);
-      } else if (e.target.value === 'condition') {
-        return sortOrder === 'asc'
-          ? a.condition.localeCompare(b.condition)
-          : b.condition.localeCompare(a.condition);
-      }
-    });
+    const sortedResults = sortResults(results, e.target.value, sortOrder);
     setResults(sortedResults);
   };
 

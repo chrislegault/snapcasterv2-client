@@ -1,7 +1,9 @@
 import React from 'react';
-import { useAtom } from 'jotai';
-import { singleCardResults, hideWelcomeMessage } from '../atoms';
+import { useAtom, useAtomValue } from 'jotai';
+import { singleCardResults, hideWelcomeMessage, sortedByAtom } from '../atoms';
 import axios from 'axios';
+import { sortResults } from '../utils';
+
 
 // import dotenv
 
@@ -77,6 +79,8 @@ export default function SearchBox({ setSearchTerm }) {
     },
   ];
 
+  const sortedBy = useAtomValue(sortedByAtom);
+
   const [cardName, setCardName] = React.useState('');
   const [results, setResults] = useAtom(singleCardResults);
   const [hideWelcome, setHideWelcome] = useAtom(hideWelcomeMessage);
@@ -93,7 +97,9 @@ export default function SearchBox({ setSearchTerm }) {
         websites: ['four01', 'gauntlet', 'fusion', 'houseofcards', 'kanatacg'],
       })
       .then(res => {
-        setResults(res.data);
+        // filter res.data by sortedBy
+        const sortedResults = sortResults(res.data, sortedBy, "asc");
+        setResults(sortedResults);
         setHideWelcome(true);
         setSearchTerm(cardName);
         setLoading(false);
@@ -133,7 +139,7 @@ export default function SearchBox({ setSearchTerm }) {
       {loading && (
         <div role="status" className="flex justify-center mt-2">
           <svg
-            class="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
+            className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +153,7 @@ export default function SearchBox({ setSearchTerm }) {
               fill="currentFill"
             />
           </svg>
-          <span class="sr-only">Loading...</span>
+          <span className="sr-only">Loading...</span>
         </div>
       )}
     </div>
