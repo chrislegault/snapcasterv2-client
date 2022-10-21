@@ -84,7 +84,7 @@ export default function SearchBox({ setSearchTerm }) {
     setLoading(true);
 
     axios
-      .post('https://snapcaster-api-v2.onrender.com/search/single', {
+      .post('https://snapcaster-api-v2.onrender.com/search/single/', {
         cardName,
         websites: ['four01', 'gauntlet', 'fusion', 'houseofcards', 'kanatacg'],
       })
