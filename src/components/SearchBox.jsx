@@ -3,6 +3,10 @@ import { useAtom } from 'jotai';
 import { singleCardResults, hideWelcomeMessage } from '../atoms';
 import axios from 'axios';
 
+// import dotenv
+
+console.log()
+
 export default function SearchBox({ setSearchTerm }) {
   const dummydata = [
     {
@@ -84,7 +88,7 @@ export default function SearchBox({ setSearchTerm }) {
     setLoading(true);
 
     axios
-      .post('https://snapcaster-api-v2.onrender.com/search/single/', {
+      .post(`${import.meta.env.VITE_API_URI}/search/single/`, {
         cardName,
         websites: ['four01', 'gauntlet', 'fusion', 'houseofcards', 'kanatacg'],
       })
