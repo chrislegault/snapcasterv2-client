@@ -7,7 +7,7 @@ export default function Home() {
   const hideWelcomeMessageValue = useAtomValue(hideWelcomeMessage);
   return (
     <>
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-xl mx-auto">
         <SingleCardSearch />
       </div>
     </>
