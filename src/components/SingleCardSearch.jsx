@@ -6,8 +6,8 @@ import SearchResultsInfo from '../components/SearchResultsInfo';
 import SearchRow from '../components/SearchRow';
 import SearchRowTable from './SearchRowTable';
 import ListView from './ListView';
+import CatalogView from './CatalogView';
 export default function SingleCardSearch() {
-
   const [results, setResults] = useAtom(singleCardResults);
   const [searchTerm, setSearchTerm] = useState('');
   const listView = useAtomValue(listViewAtom);
@@ -17,24 +17,18 @@ export default function SingleCardSearch() {
       <SearchBox setSearchTerm={setSearchTerm} />
       <div className="p-2" />
       {results && (
-        <SearchResultsInfo
-          numResults={results.length}
-          searchTerm={searchTerm}
-        />
+        <>
+          <SearchResultsInfo
+            numResults={results.length}
+            searchTerm={searchTerm}
+          />
+          {listView ? (
+            <ListView cardData={results} />
+          ) : (
+            <CatalogView cardData={results} />
+          )}
+        </>
       )}
-
-
-
-      {results && 
-        (listView ? (<ListView cardData={results}/>) : (
-          <div>
-            {results.map((cardData) => (
-              <SearchRow cardData={cardData} key={cardData.id}/>
-            ))}
-          </div>
-        ))
-      }
-
     </div>
   );
 }
