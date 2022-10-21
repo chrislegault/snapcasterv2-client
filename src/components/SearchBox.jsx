@@ -113,6 +113,8 @@ export default function SearchBox({ setSearchTerm }) {
           placeholder="Search for a card"
           required
           onChange={e => setCardName(e.target.value)}
+          // no autocomplete
+          autoComplete="off"
         />
         <button
           type="submit"
