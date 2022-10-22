@@ -10,7 +10,7 @@ const websiteLogos = {
   fusion:
     'https://cc-client-assets.s3.amazonaws.com/store/fusiongamingonline/e85497a0877911e79bd1b58786c09dea/large/fusiongamingonline_logo2.png',
   four01:
-    'https://cdn.shopify.com/s/files/1/1704/1809/files/Logo_For_Website_260x_b5b9ece0-d6a5-4807-9427-0d488c650cb7_320x.png?v=1582044237',
+    'https://i.ibb.co/h9x3Ksb/401games.png',
   everythinggames: 'https://cdn.shopify.com/s/files/1/0618/8905/2856/files/Header_76747500-dd40-4d94-8016-a1d21282e094_large.png?v=1650298823'
 };
 
@@ -41,7 +41,7 @@ export default function SearchRow({ cardData }) {
                 <img
                   src={websiteLogos[cardData.website]}
                   alt="website logo"
-                  className="m-1 w-20 rounded-md"
+                  className="mt-1 w-12 md:w-20 object-cover" 
                 />
                 {/* <div className="text-sm">{cardData.website}</div> */}
               </div>
