@@ -37,7 +37,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
           <div className="flex flex-row mx-2 md:col-span-2">
             <div className="mr-2">Sort by:</div>
             <select
-              className="bg-gray-700 text-white rounded-md border mx-1"
+              className="bg-white dark:bg-gray-700 rounded-md border mx-1"
               value={sortedBy}
               onChange={handleSortByChange}
             >
@@ -46,7 +46,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
               <option value="condition">Condition</option>
             </select>
             <select
-              className="bg-gray-700 text-white rounded-md border mx-1"
+              className="bg-white dark:bg-gray-700 rounded-md border mx-1"
               value={sortOrder}
               onChange={handleSortOrderChange}
             >
@@ -59,17 +59,17 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
             <div className="flex items-center md:col-span-1">
               <span className="mx-2">List View:</span>
               <label
-                htmlFor="default-toggle"
+                htmlFor="list-view-toggle"
                 className="inline-flex relative items-center cursor-pointer"
               >
                 <input
                   type="checkbox"
                   value=""
-                  id="default-toggle"
+                  id="list-view-toggle"
                   className="sr-only peer"
                   onClick={toggleListView}
                 />
-                <div className="w-7 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-red-500 dark:peer-focus:ring-deepRed rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-deepRed"></div>
+                <div className="w-7 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary dark:peer-focus:ring-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
               </label>
             </div>
           </div>

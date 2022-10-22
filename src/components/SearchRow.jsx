@@ -15,7 +15,10 @@ const websiteLogos = {
 };
 
 export default function SearchRow({ cardData }) {
-
+  const handleClick = () => {
+    window.open(cardData.link, '_blank');
+  };
+  
   return (
     <>
         <>
@@ -46,8 +49,11 @@ export default function SearchRow({ cardData }) {
             <div className="col-span-4 mt-2">
               <div className="flex flex-col items-end">
                 <div className="text-xl font-bold">${cardData.price}</div>
+                <div className="flex flex-row space-x-2">
+                {cardData.foil && <div className="text-sm font-bold text-primary">Foil</div>}
                 <div className="text-sm font-bold">{cardData.condition}</div>
-                <button className="bg-deepRed  text-white rounded-md px-1 py-1 w-20">
+                </div>
+                <button className="bg-primary  text-white rounded-md px-1 py-1 w-20" onClick={handleClick}>
                   Buy
                 </button>
               </div>

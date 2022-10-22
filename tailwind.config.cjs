@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         darkBackground: '#252630',
         darkerBackground: '#16161C',
-        deepRed: '#952828',
+        primary: '#9C1FE9',
       },
     },
   },

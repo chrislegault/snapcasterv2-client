@@ -120,7 +120,7 @@ export default function SearchBox({ setSearchTerm }) {
         <input
           type="text"
           id="card_search"
-          className="max-w-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-400 focus:border-red-500 block w-full p-2.5 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500 outline-none"
+          className="max-w-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary outline-none"
           placeholder="Search for a card"
           required
           onChange={e => setCardName(e.target.value)}
@@ -129,7 +129,7 @@ export default function SearchBox({ setSearchTerm }) {
         />
         <button
           type="submit"
-          className="transition-all bg-deepRed  hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+          className="transition-all bg-primary  hover:bg-primary text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
         >
           Search
         </button>
@@ -140,7 +140,7 @@ export default function SearchBox({ setSearchTerm }) {
       {loading && (
         <div role="status" className="flex justify-center mt-5">
           <svg
-            className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
+            className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

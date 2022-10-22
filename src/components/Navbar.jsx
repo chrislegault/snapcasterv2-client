@@ -23,7 +23,7 @@ export default function Navbar() {
       
         <div className="px-4" />
 
-        {/* <DarkModeToggle /> */}
+        <DarkModeToggle />
       </nav>
   );
 }
