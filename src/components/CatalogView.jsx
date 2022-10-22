@@ -4,8 +4,8 @@ import SearchRow from './SearchRow'
 export default function CatalogView({cardData}) {
   return (
     <div>
-            {cardData.map((cardData) => (
-              <SearchRow cardData={cardData} key={cardData.id}/>
+            {cardData.map((cardData, index) => (
+              <SearchRow cardData={cardData} key={index}/>
             ))}
           </div>
   )

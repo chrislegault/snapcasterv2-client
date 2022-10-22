@@ -57,19 +57,19 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
           <div>
             {/* list view toggle */}
             <div className="flex items-center md:col-span-1">
-              <span class="mx-2">List View:</span>
+              <span className="mx-2">List View:</span>
               <label
-                for="default-toggle"
-                class="inline-flex relative items-center cursor-pointer"
+                htmlFor="default-toggle"
+                className="inline-flex relative items-center cursor-pointer"
               >
                 <input
                   type="checkbox"
                   value=""
                   id="default-toggle"
-                  class="sr-only peer"
+                  className="sr-only peer"
                   onClick={toggleListView}
                 />
-                <div class="w-7 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-red-500 dark:peer-focus:ring-deepRed rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-deepRed"></div>
+                <div className="w-7 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-red-500 dark:peer-focus:ring-deepRed rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-deepRed"></div>
               </label>
             </div>
           </div>
