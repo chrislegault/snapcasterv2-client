@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import VariantSelectorModal from './VariantSelectorModal';
 
 const conditionPriorityMap = {
   NM: 1,
@@ -10,6 +11,13 @@ const conditionPriorityMap = {
   DMG: 5,
 };
 export default function BulkCatalogRow({ card }) {
+  const [open, setOpen] = useState(false);
+
+const handleClick = () => {
+      // open the modal
+      setOpen(true);
+    };
+
   // This is randomly initialized to the first card in the list
   const [selectedVariant, setSelectedVariant] = useState(card.variants[0]);
   // we want to go to card.variants and find the variant with the lowest price
@@ -44,7 +52,7 @@ export default function BulkCatalogRow({ card }) {
   // useEffect to set the selectedVariant to the lowestPriceVariant
   useEffect(() => {
     setSelectedVariant(lowestPriceVariant[0]);
-  }, [lowestPriceVariant]);
+  }, []);
 
   // console.log("lowestPriceVariant: ", lowestPriceVariant);
 
@@ -52,6 +60,15 @@ export default function BulkCatalogRow({ card }) {
 
   return (
     <div>
+      {/* Modal */}
+      {open && (
+        <VariantSelectorModal
+          cardVariants={card.variants}
+          setSelectedVariant={setSelectedVariant}
+          open={open}
+          setOpen={setOpen}
+        />
+      )}
       {selectedVariant && (
         <div>
           {/* SMALL LAYOUT */}
@@ -118,6 +135,9 @@ export default function BulkCatalogRow({ card }) {
                 {/* Button to open modal to switch selectedVariant */}
                 <button
                   className="text-primary font-bold underline my-auto"
+
+                  onClick={handleClick}
+
                 >Other versions ></button>
                 </div>
               </div>
