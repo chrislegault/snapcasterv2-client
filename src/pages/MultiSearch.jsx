@@ -9,9 +9,10 @@ export default function MultiSearch() {
   const bulkCardResults = useAtomValue(bulkCardResultsAtom);
 
   return (
-    <div>
-      {/* if bulkCardResults is not null, show BulkCatalogView, else show MultiSearchForm */}
+    <>
+     <div className="max-w-xl mx-auto">    
+       {/* if bulkCardResults is not null, show BulkCatalogView, else show MultiSearchForm */}
       {bulkCardResults ? <BulkCatalogView /> : <MultiSearchForm />}
-    </div>
+    </div></>
   )
 }
