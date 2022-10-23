@@ -1,7 +1,10 @@
 import React from 'react'
+import MultiSearchForm from '../components/MultiSearchForm'
 
 export default function MultiSearch() {
   return (
-    <div>MultiSearch</div>
+    <div>
+      <MultiSearchForm />
+    </div>
   )
 }
