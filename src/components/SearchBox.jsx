@@ -95,7 +95,7 @@ export default function SearchBox({ setSearchTerm }) {
     axios
       .post(`${import.meta.env.VITE_API_URI}/search/single/`, {
         cardName,
-        websites: ['four01', 'gauntlet', 'fusion', 'houseofcards', 'kanatacg', 'everythinggames', 'magicstronghold'],
+        websites: ['four01', 'gauntlet', 'fusion', 'houseofcards', 'kanatacg', 'everythinggames', 'magicstronghold', 'facetoface'],
       })
       .then(res => {
         // filter res.data by sortedBy

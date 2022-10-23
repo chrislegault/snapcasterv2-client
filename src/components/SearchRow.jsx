@@ -12,7 +12,8 @@ const websiteLogos = {
   four01:
     'https://i.ibb.co/h9x3Ksb/401games.png',
   everythinggames: 'https://cdn.shopify.com/s/files/1/0618/8905/2856/files/Header_76747500-dd40-4d94-8016-a1d21282e094_large.png?v=1650298823',
-  magicstronghold: 'https://magicstronghold-images.s3.amazonaws.com/customizations/logo.png'
+  magicstronghold: 'https://magicstronghold-images.s3.amazonaws.com/customizations/logo.png',
+  facetoface: 'https://i.ibb.co/W2bPWdK/logo-colored-1.png',
 };
 
 export default function SearchRow({ cardData }) {
