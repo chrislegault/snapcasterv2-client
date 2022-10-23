@@ -15,4 +15,4 @@ export const selectedBulkStoresAtom = atom([]);
 
 export const bulkCardInputAtom = atom("");
 
-export const bulkCardResultsAtom = atom([]);
+export const bulkCardResultsAtom = atom(null);

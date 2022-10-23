@@ -20,7 +20,6 @@ export default function MultiSearchForm() {
             worstCondition: "DMG"
         }
 
-        console.log("post url: " + `${import.meta.env.VITE_API_URI}/search/bulk/`)
         axios
             .post(`${import.meta.env.VITE_API_URI}/search/bulk/`, {
                 cardNames,
@@ -29,7 +28,6 @@ export default function MultiSearchForm() {
             })
             .then((response) => {
                 setBulkCardResults(response.data);
-                console.log(response.data);
             }
         );
     }
