@@ -11,7 +11,8 @@ const websiteLogos = {
     'https://cc-client-assets.s3.amazonaws.com/store/fusiongamingonline/e85497a0877911e79bd1b58786c09dea/large/fusiongamingonline_logo2.png',
   four01:
     'https://i.ibb.co/h9x3Ksb/401games.png',
-  everythinggames: 'https://cdn.shopify.com/s/files/1/0618/8905/2856/files/Header_76747500-dd40-4d94-8016-a1d21282e094_large.png?v=1650298823'
+  everythinggames: 'https://cdn.shopify.com/s/files/1/0618/8905/2856/files/Header_76747500-dd40-4d94-8016-a1d21282e094_large.png?v=1650298823',
+  magicstronghold: 'https://magicstronghold-images.s3.amazonaws.com/customizations/logo.png'
 };
 
 export default function SearchRow({ cardData }) {
