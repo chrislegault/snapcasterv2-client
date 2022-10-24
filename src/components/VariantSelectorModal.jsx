@@ -34,7 +34,7 @@ export default function VariantSelectorModal({
         <div className="bg-white dark:bg-darkBackground w-11/12 md:w-1/2 lg:w-1/3 rounded-lg shadow-lg z-30">
           {/* Modal Header */}
           <div className="flex justify-between items-center p-4 border-b">
-            <h3 className="text-2xl font-bold">Select a Variant</h3>
+            <h3 className="text-2xl font-bold">Select a variant</h3>
             <button className="close-modal" onClick={() => setOpen(false)}>
               &times;
             </button>
@@ -64,7 +64,7 @@ export default function VariantSelectorModal({
                     </div>
                   </div>
                   <button
-                    className="bg-primary text-white font-bold py-2 px-4 rounded"
+                    className="bg-primary hover:bg-purple-500 text-white font-bold py-2 px-4 rounded"
                     onClick={() => {
                         // update the selectedBulkInfo to reflect the price change
                         if (isSelected) {

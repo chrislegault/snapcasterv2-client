@@ -13,10 +13,13 @@ export default function BulkSearchTextField() {
             </label>
             {/* Create a text area with max 100 lines, but only show 20 lines at a time */}
             <div className="flex flex-col">
+                {/* max number of lines we will accept is 100 */}
                 <textarea
-                    className="w-full h-40 dark:bg-darkerBackground"
+                    className="w-full rounded-md border border-gray-300 dark:border-darkBackground dark:bg-darkerBackground"
                     value={bulkCardInput}
-                    onChange={e => setBulkCardInput(e.target.value)}
+                    onChange={(e) => setBulkCardInput(e.target.value)}
+                    rows="20"
+                    maxLength="100"
                 />
                 </div>
             </div>
