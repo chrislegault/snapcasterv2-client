@@ -115,11 +115,13 @@ const handleClick = () => {
               <div className="flex flex-col p-2 col-span-5">
                 <div>{selectedVariant.name}</div>
                 <div>{selectedVariant.set}</div>
+                <div>{selectedVariant.website}</div>
                 {/* Buy button, goes to bottom of the col*/}
                 <button
                   className="bg-primary text-white font-bold py-2 px-4 rounded mt-auto"
                   onClick={() => {
-                    console.log('clicked');
+                    //open selectedVariant.link in a new tab
+                    window.open(selectedVariant.link, '_blank'); 
                   }}
                 >
                   Buy
