@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { useSetAtom } from 'jotai';
+import { useSetAtom, useAtom } from 'jotai';
+import { selectedBulkInfoAtom } from '../atoms';
 
 export default function VariantSelectorModal({
   cardVariants,
+  selectedVariant,
   setSelectedVariant,
   open,
   setOpen,
+  isSelected,
 }) {
   // basic popup modal
+
+  const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
 
   return (
     <div>
@@ -47,7 +52,7 @@ export default function VariantSelectorModal({
                     <img
                       src={variant.image}
                       alt="card"
-                      className="w-16 h-24 rounded-2xl"
+                      className="w-16 h-24 rounded-sm"
                     />
                     <div className="ml-2">
                       <div>{variant.name}</div>
@@ -61,6 +66,17 @@ export default function VariantSelectorModal({
                   <button
                     className="bg-primary text-white font-bold py-2 px-4 rounded"
                     onClick={() => {
+                        // update the selectedBulkInfo to reflect the price change
+                        if (isSelected) {
+                        setSelectedBulkInfo({
+                          ...selectedBulkInfo,
+                          priceOfSelected:
+                            selectedBulkInfo.priceOfSelected -
+                            selectedVariant.price +
+                            variant.price,
+                        });
+                      }
+                        // update the selectedVariant
                         setSelectedVariant(variant);
 
                       setOpen(false);

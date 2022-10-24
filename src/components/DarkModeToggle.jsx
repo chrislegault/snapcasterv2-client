@@ -6,7 +6,6 @@ export default function DarkModeToggle() {
   const [darkMode, setDarkMode] = useAtom(darkModeAtom);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    console.log('Darkmode atom is now: ', darkMode);
   };
 
   return (
