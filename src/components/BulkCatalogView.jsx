@@ -44,15 +44,6 @@ export default function BulkCatalogView() {
                 Reset
             </button>
         </div>
-                    {/* button to log selectedBulkInfo */}
-        <div className="flex flex-col p-2">
-            <button
-                className="bg-primary hover:backdrop-brightness-75 text-white font-bold py-2 px-4 rounded"
-                onClick={() => console.log('selectedBulkInfo', selectedBulkInfo)}
-            >
-                Log selectedBulkInfo
-            </button>
-        </div>
         <BulkSearchResultsInfo numResults={bulkCardResults ? (bulkCardResults.length) : (0)}  />
         {bulkCardResults && bulkCardResults.map((card, index) => (
             <BulkCatalogRow card={card} key={index}/>

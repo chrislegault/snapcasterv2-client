@@ -5,10 +5,6 @@ import axios from 'axios';
 import { sortResults } from '../utils';
 
 
-// import dotenv
-
-console.log()
-
 export default function SearchBox({ setSearchTerm }) {
   const dummydata = [
     {

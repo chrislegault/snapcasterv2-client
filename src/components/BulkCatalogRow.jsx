@@ -91,6 +91,14 @@ const handleClick = () => {
               <div>{selectedVariant.website}</div>
               {selectedVariant.foil && <div>Foil</div>}
               <div>{selectedVariant.price}</div>
+              {/* Selector Checkbox */}
+              <div className="col-span-1 flex justify-center items-center">
+                <input
+                  type="checkbox"
+                  checked={rowSelected}
+                  onChange={toggleSelectCard}
+                />
+              </div>
 
               {/* Button to open the modal for changing the selectedVariant */}
 

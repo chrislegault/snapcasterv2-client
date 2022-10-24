@@ -67,7 +67,6 @@ export default function MultiSearchForm() {
         // }
         // we need to find which names in cardNames are missing from the response card objects
         // compare them all using lowercase
-        console.log("response.data", response.data);
         const missingCardNames = cardNames.filter(
           cardName =>
             !response.data.some(
