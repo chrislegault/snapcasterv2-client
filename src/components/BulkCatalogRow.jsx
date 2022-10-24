@@ -70,6 +70,7 @@ const handleClick = () => {
           setSelectedVariant={setSelectedVariant}
           open={open}
           setOpen={setOpen}
+          isSelected={rowSelected}
         />
       )}
       {selectedVariant && (

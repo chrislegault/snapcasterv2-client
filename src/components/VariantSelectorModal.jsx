@@ -8,6 +8,7 @@ export default function VariantSelectorModal({
   setSelectedVariant,
   open,
   setOpen,
+  isSelected,
 }) {
   // basic popup modal
 
@@ -66,6 +67,7 @@ export default function VariantSelectorModal({
                     className="bg-primary text-white font-bold py-2 px-4 rounded"
                     onClick={() => {
                         // update the selectedBulkInfo to reflect the price change
+                        if (isSelected) {
                         setSelectedBulkInfo({
                           ...selectedBulkInfo,
                           priceOfSelected:
@@ -73,6 +75,7 @@ export default function VariantSelectorModal({
                             selectedVariant.price +
                             variant.price,
                         });
+                      }
                         // update the selectedVariant
                         setSelectedVariant(variant);
 
