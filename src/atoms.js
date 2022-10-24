@@ -10,3 +10,9 @@ export const sortedByAtom = atom("price");
 export const sortOrderAtom = atom("asc");
 
 export const listViewAtom = atom(false);
+
+export const selectedBulkStoresAtom = atom([]);
+
+export const bulkCardInputAtom = atom("");
+
+export const bulkCardResultsAtom = atom(null);
