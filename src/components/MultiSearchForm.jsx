@@ -35,12 +35,13 @@ export default function MultiSearchForm() {
       .filter(line => line.length > 0)
       .filter((line, index, self) => self.indexOf(line) === index)
       .map(line => line.replace(/^\d+\s*/, ''))
-      .map(line => line.replace(/^\d+x\s*/, ''))
+      .map(line => line.replace(/^\d+x\s*/, '').replace(/\//g, '//'))
       .filter(line => line !== 'Sideboard')
       .filter(line => line !== 'Deck');
 
     // set the expected card count
     setExpectedBulkCardCount(cardNames.length);
+
 
     // const cardNames = bulkCardInput.split('\n');
     // make the request to the backend using axios
@@ -49,6 +50,8 @@ export default function MultiSearchForm() {
       websites: selectedStores,
       worstCondition: 'DMG',
     };
+
+  
 
     axios
       .post(`${import.meta.env.VITE_API_URI}/search/bulk/`, {
@@ -79,7 +82,10 @@ export default function MultiSearchForm() {
   return (
     <div>
       {loading ? (
-        <div role="status" className="flex justify-center mt-5">
+        <div role="status" className="flex flex-col justify-center mt-5">
+          <div className="text-md">
+            Loading...
+          </div>
           <svg
             className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
             viewBox="0 0 100 101"
