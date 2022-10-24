@@ -34,10 +34,18 @@ export default function MultiSearchForm() {
       .map(line => line.trim())
       .filter(line => line.length > 0)
       .filter((line, index, self) => self.indexOf(line) === index)
+      // replace quanitty numbers infront
       .map(line => line.replace(/^\d+\s*/, ''))
-      .map(line => line.replace(/^\d+x\s*/, '').replace(/\//g, '//'))
+      .map(line => line.replace(/^\d+x\s*/, ''))
+      // if there are any single slashes like " / ", we'll replace them with " // "
+      .map(line => line.replace(/ \/ /g, ' // '))
+      // strip "*F*" off any lines that have it
+      .map(line => line.replace(/\*F\*/g, ''))
+      // strip each line
+      .map(line => line.trim())
       .filter(line => line !== 'Sideboard')
       .filter(line => line !== 'Deck');
+
 
     // set the expected card count
     setExpectedBulkCardCount(cardNames.length);
