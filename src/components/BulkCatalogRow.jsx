@@ -2,7 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import VariantSelectorModal from './VariantSelectorModal';
 import { useAtom } from 'jotai';
-import { selectedCatalogRowsAtom } from '../atoms';
+import { selectedCatalogRowsAtom, 
+  selectedCatalogRowsPriceAtom,
+  selectedCatalogRowsQuantityAtom,
+  selectedBulkInfoAtom
+} from '../atoms';
 
 const conditionPriorityMap = {
   NM: 1,
@@ -14,32 +18,39 @@ const conditionPriorityMap = {
 };
 export default function BulkCatalogRow({ card }) {
   const [open, setOpen] = useState(false);
-  const [rowSelected, setRowSelected] = useState(true);
+  const [rowSelected, setRowSelected] = useState(false);
+  
   const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(
     selectedCatalogRowsAtom
   );
   // This is randomly initialized to the first card in the list
   const [selectedVariant, setSelectedVariant] = useState(card.variants[0]);
+  const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
 
   const toggleSelectCard = () => {
-    // if the row is in the selectedCatalogRows array, remove it and set rowSelected to false
-    // otherwise, add it and set rowSelected to true
+    // if the row is selected, remove it from the selectedCatalogRows
     if (rowSelected) {
       setSelectedCatalogRows(
-        selectedCatalogRows.filter(row => row.cardName !== card.cardName)
+        selectedCatalogRows.filter((row) => row.cardName !== card.name)
       );
+      setSelectedBulkInfo({
+        ...selectedBulkInfo,
+        numCardsSelected: selectedBulkInfo.numCardsSelected - 1,
+        priceOfSelected: selectedBulkInfo.priceOfSelected - selectedVariant.price
+      });
       setRowSelected(false);
     }
-    if (!rowSelected) {
-      // Row is the card with the selected variant
-      const row = {
-        cardName: card.cardName,
-        selectedVariant: selectedVariant,
-        variants: card.variants,
-      }
-
-      console.log("row", row);
-      setSelectedCatalogRows([...selectedCatalogRows, row]);
+    // if the row is not selected, add it to the selectedCatalogRows
+    else {
+      setSelectedCatalogRows([
+        ...selectedCatalogRows,
+        { cardName: card.name, variant: selectedVariant },
+      ]);
+      setSelectedBulkInfo({
+        ...selectedBulkInfo,
+        numCardsSelected: selectedBulkInfo.numCardsSelected + 1,
+        priceOfSelected: selectedBulkInfo.priceOfSelected + selectedVariant.price
+      });
       setRowSelected(true);
     }
   };
@@ -49,95 +60,13 @@ const handleClick = () => {
       setOpen(true);
     };
 
-
-  // we want to go to card.variants and find the variant with the lowest price
-  const lowestPriceVariant = card.variants.reduce((acc, variant) => {
-    if (acc.length === 0) {
-      acc.push(variant);
-      console.log('first variant pushed to acc: ', acc);
-    } else {
-      if (variant.price < acc[0].price) {
-        acc = [variant];
-      } else if (variant.price === acc[0].price) {
-        // check if the condition is better using the conditionPriorityMap
-        if (
-          conditionPriorityMap[variant.condition] <
-          conditionPriorityMap[acc[0].condition]
-        ) {
-          acc = [variant];
-        } else if (
-          conditionPriorityMap[variant.condition] ===
-          conditionPriorityMap[acc[0].condition]
-        ) {
-          // same condition, same price, check foil
-          if (variant.foil && !acc[0].foil) {
-            acc = [variant];
-          }
-        }
-      }
-    }
-    return acc;
-  }, []);
-
-  // useEffect to set the selectedVariant to the lowestPriceVariant and push the row to the selectedCatalogRows array
-  // we only want this to run once when the component mounts
-  useEffect(() => {
-    const row = {
-      cardName: card.cardName,
-      selectedVariant: lowestPriceVariant[0],
-      variants: card.variants,
-    };
-    setSelectedCatalogRows([...selectedCatalogRows, row]);
-    setSelectedVariant(lowestPriceVariant[0]);
-
-
-  }, []);
-
-
-  // everytime the selectedVariant changes, we want to update the row for this card in the selectedCatalogRows array
-  useEffect(() => {
-    const row = {
-      cardName: card.cardName,
-      selectedVariant: selectedVariant,
-      variants: card.variants,
-    };
-    setSelectedCatalogRows(
-      selectedCatalogRows.map(row => {
-        if (row.cardName === card.cardName) {
-          return row = {
-            cardName: card.cardName,
-            selectedVariant: selectedVariant,
-            variants: card.variants,
-          };
-        } else {
-          return row;
-        }
-      })
-    );
-  }, [selectedVariant]);
-
-  // useEffect(() => {
-  //   setSelectedVariant(lowestPriceVariant[0]);
-  //   // Row is the card object with the selected variant
-  //   const row = {
-  //     cardName: card.cardName,
-  //     selectedVariant: selectedVariant,
-  //     variants: card.variants,
-  //   }
-
-    
-  // }, []);
-
-  // console.log("lowestPriceVariant: ", lowestPriceVariant);
-
-  // setSelectedVariant(lowestPriceVariant[0]);
-
   return (
     <div>
       {/* Modal */}
       {open && (
         <VariantSelectorModal
           cardVariants={card.variants}
+          selectedVariant={selectedVariant}
           setSelectedVariant={setSelectedVariant}
           open={open}
           setOpen={setOpen}
@@ -187,7 +116,6 @@ const handleClick = () => {
 
           {/* SM + LAYOUT */}
           <div className="hidden sm:flex sm:flex-col p-2 hover:backdrop-brightness-75 rounded-md">
-
             <div className="grid grid-cols-12">
               {/* Selector Checkbox */}
               <div className="col-span-1 flex justify-center items-center">

@@ -1,25 +1,24 @@
 import React, {useEffect} from 'react';
-import { useAtomValue, useAtom } from 'jotai';
-import { bulkCardResultsAtom, expectedBulkCardCountAtom, missingCardNamesAtom, selectedCatalogRowsAtom } from '../atoms';
+import { useAtomValue, useAtom, useSetAtom } from 'jotai';
+import { bulkCardResultsAtom, 
+  selectedCatalogRowsPriceAtom,
+  expectedBulkCardCountAtom, 
+  missingCardNamesAtom, 
+  selectedCatalogRowsAtom,
+  selectedBulkInfoAtom
+} from '../atoms';
 
 export default function BulkSearchResultsInfo({numResults}) {
   const missingCardNames = useAtomValue(missingCardNamesAtom);
   const dummyMissingCards = ['Foil Island', 'Austere Command'];
   const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
   const expectedBulkCardCount = useAtomValue(expectedBulkCardCountAtom);
-  let totalPriceOfSelectedCards = 0;
-  // we need to recalculate the price of selected cards every time the selectedCatalogRows atom changes
-  useEffect(() => {
-    console.log("selectedCatalogRows changed");
-    // recalculate the price of selected cards
-    totalPriceOfSelectedCards = selectedCatalogRows.reduce((acc, row) => {
-      try{
-      return acc + row.selectedVariant.price;
-      } catch (e) {
-        return acc}
-    }, 0);
+  const selectedCatalogRowsPrice = useAtomValue(selectedCatalogRowsPriceAtom);
 
-  }, [selectedCatalogRows]);
+// -------------------------------
+  const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
+
+
 
 
 
@@ -29,8 +28,11 @@ export default function BulkSearchResultsInfo({numResults}) {
         <div className="flex flex-col">
           <div className="text-sm md:text-base font-bold">Results</div>
           <div className="text-xs md:text-sm">{numResults} of {expectedBulkCardCount} cards found</div>
-          <div className="text-xs md:text-sm">{selectedCatalogRows.length} cards selected</div>
-          <div className="text-xs md:text-sm">Price of selected: ${totalPriceOfSelectedCards}</div>
+          <div className="text-xs md:text-sm">{selectedBulkInfo.numCardsSelected} cards selected</div>
+          {/* round the price of selected to 2 decimals */}
+          <div className="text-xs md:text-sm">Price of selected: ${selectedBulkInfo.priceOfSelected.toFixed(2)}</div>
+        
+        {missingCardNames.length > 0 && <div>
           <div className="text-xs md:text-sm">
             We couldn't any results for these cards:
           </div>
@@ -40,8 +42,11 @@ export default function BulkSearchResultsInfo({numResults}) {
                 {card}
               </div>
             ))}
-            </div>
-          </div> {/* end of column */}
+          </div>
+        </div>
+}
+
+        </div> {/* end of column */}
       </div>
     </div>
  );

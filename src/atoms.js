@@ -20,3 +20,10 @@ export const bulkCardResultsAtom = atom(null);
 export const expectedBulkCardCountAtom = atom(0);
 export const missingCardNamesAtom = atom([]);
 export const selectedCatalogRowsAtom = atom([]);
+export const selectedCatalogRowsPriceAtom = atom(0);
+export const selectedCatalogRowsQuantityAtom = atom(0);
+
+export const selectedBulkInfoAtom = atom({
+    numCardsSelected: 0,
+    priceOfSelected: 0,
+});
