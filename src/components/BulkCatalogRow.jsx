@@ -73,7 +73,7 @@ const handleClick = () => {
         <div>
           {/* SMALL LAYOUT */}
           {/* center everything in a column */}
-          <div className="flex flex-col items-center sm:hidden">
+          <div className="flex flex-col items-center sm:hidden hover:bg-darkerBackground rounded-md p-5">
             {/* Image */}
             <img
               src={selectedVariant.image}
@@ -81,23 +81,32 @@ const handleClick = () => {
               className="w-7/12 sm:w-16 md:w-24 rounded-2xl sm:rounded-md h-fit"
             />
             {/* Card Info */}
-            <div className="">
+            <div className="flex flex-col text-center">
               <div>{selectedVariant.name}</div>
               <div>{selectedVariant.set}</div>
               <div>{selectedVariant.condition}</div>
+              <div>{selectedVariant.website}</div>
               {selectedVariant.foil && <div>Foil</div>}
               <div>{selectedVariant.price}</div>
 
               {/* Button to open the modal for changing the selectedVariant */}
-              <button
-                className="bg-primary text-white font-bold py-2 px-4 rounded"
-                onClick={() => {
-                  console.log('clicked');
-                }}
-              >
-                Change
-              </button>
 
+                {/* Button to open modal to switch selectedVariant */}
+                <button
+                  className="text-primary font-bold underline my-auto"
+
+                  onClick={handleClick}
+
+                >Other versions ></button>
+              <button
+                  className="bg-primary text-white font-bold py-2 px-4 rounded mt-auto"
+                  onClick={() => {
+                    //open selectedVariant.link in a new tab
+                    window.open(selectedVariant.link, '_blank'); 
+                  }}
+                >
+                  Buy
+                </button>
               
             </div>
           </div>
