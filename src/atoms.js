@@ -16,3 +16,7 @@ export const selectedBulkStoresAtom = atom([]);
 export const bulkCardInputAtom = atom("");
 
 export const bulkCardResultsAtom = atom(null);
+
+export const expectedBulkCardCountAtom = atom(0);
+export const missingCardNamesAtom = atom([]);
+export const selectedCatalogRowsAtom = atom([]);

@@ -1,12 +1,24 @@
 import React from 'react'
-import { useAtom } from 'jotai'
-import { bulkCardResultsAtom } from '../atoms'
+import { useAtom, useSetAtom } from 'jotai'
+import { 
+    bulkCardResultsAtom,
+    expectedBulkCardCountAtom,
+    missingCardNamesAtom,
+    selectedCatalogRowsAtom,
+} from '../atoms'
 import BulkCatalogRow from './BulkCatalogRow'
+import BulkSearchResultsInfo from './BulkSearchResultsInfo'
 
 export default function BulkCatalogView() {
     const [bulkCardResults, setBulkCardResults] = useAtom(bulkCardResultsAtom);
+    const setExpectedBulkCardCount = useSetAtom(expectedBulkCardCountAtom);
+    const setMissingCardNames = useSetAtom(missingCardNamesAtom);
+    const setSelectedCatalogRows = useSetAtom(selectedCatalogRowsAtom);
     const handleReset = () => {
         setBulkCardResults(null);
+        setExpectedBulkCardCount(0);
+        setMissingCardNames([]);
+        setSelectedCatalogRows([]);
     }
 
   return (
@@ -20,7 +32,8 @@ export default function BulkCatalogView() {
                 Reset
             </button>
         </div>
-        {bulkCardResults.map((card, index) => (
+        <BulkSearchResultsInfo numResults={bulkCardResults ? (bulkCardResults.length) : (0)}  />
+        {bulkCardResults && bulkCardResults.map((card, index) => (
             <BulkCatalogRow card={card} key={index}/>
         ))}
 

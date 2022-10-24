@@ -47,7 +47,7 @@ export default function VariantSelectorModal({
                     <img
                       src={variant.image}
                       alt="card"
-                      className="w-16 h-24 rounded-2xl"
+                      className="w-16 h-24 rounded-sm"
                     />
                     <div className="ml-2">
                       <div>{variant.name}</div>
