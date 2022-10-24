@@ -90,8 +90,9 @@ export default function MultiSearchForm() {
   return (
     <div>
       {loading ? (
-        <div role="status" className="flex flex-col justify-center mt-5">
-          <div className="text-md">
+        <div className="flex flex-col items-center justify-center">
+        <div role="status" className="flex flex-row justify-center mt-5">
+          <div className="text-md mr-3">
             Loading...
           </div>
           <svg
@@ -110,6 +111,10 @@ export default function MultiSearchForm() {
             />
           </svg>
           <span className="sr-only">Loading...</span>
+        </div>
+        <div className="text-sm">
+          This may take a while, depending on how many cards you're searching for.
+          </div>
         </div>
       ) : (
         <>
