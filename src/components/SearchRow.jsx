@@ -55,7 +55,9 @@ export default function SearchRow({ cardData }) {
                 {cardData.foil && <div className="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Foil</div>}
                 <div className="text-sm font-bold">{cardData.condition}</div>
                 </div>
-                <button className="bg-primary hover:bg-purple-500 text-white rounded-md px-1 py-1 w-20" onClick={handleClick}>
+                <button className="btn-small mt-2"
+                  onClick={handleClick}
+                >
                   Buy
                 </button>
               </div>

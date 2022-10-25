@@ -125,7 +125,7 @@ export default function SearchBox({ setSearchTerm }) {
         />
         <button
           type="submit"
-          className="transition-all bg-primary  hover:bg-primary text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+          className="btn"
         >
           Search
         </button>

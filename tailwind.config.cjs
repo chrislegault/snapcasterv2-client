@@ -11,6 +11,12 @@ module.exports = {
         darkerBackground: '#16161C',
         primary: '#9C1FE9',
       },
+      variants: {
+        extend: {
+          backgroundColor: ['active'],
+        }
+      }
+
     },
   },
   plugins: [],

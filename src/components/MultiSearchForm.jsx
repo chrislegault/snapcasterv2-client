@@ -131,7 +131,7 @@ export default function MultiSearchForm() {
           {/* Search button */}
           <div className="flex flex-col p-2">
             <button
-              className="bg-primary hover:backdrop-brightness-75 text-white font-bold py-2 px-4 rounded"
+              className="btn"
               onClick={handleSearch}
               type="submit"
             >

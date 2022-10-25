@@ -70,7 +70,7 @@ export default function VariantSelectorModal({
                       <div className="text-sm font-bold">{variant.condition}</div>
 
                   <button
-                    className="bg-primary hover:bg-purple-500 text-white font-bold p-1 rounded-md w-20"
+                    className="btn-small mt-2"
                     onClick={() => {
                         // update the selectedBulkInfo to reflect the price change
                         if (isSelected) {
@@ -98,7 +98,7 @@ export default function VariantSelectorModal({
           {/* Modal Footer */}
           <div className="flex justify-end p-4 border-t">
             <button
-              className="bg-primary text-white font-bold py-2 px-4 rounded"
+              className="btn py-2 px-4"
               onClick={() => setOpen(false)}
             >
               Close

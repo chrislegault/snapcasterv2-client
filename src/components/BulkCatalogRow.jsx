@@ -189,7 +189,7 @@ export default function BulkCatalogRow({ card }) {
                 <div className="text-sm">{selectedVariant.website}</div>
                                 {/* Button to open modal to switch selectedVariant */}
                                 <button
-                  className="border-2 border-primary hover:bg-primary hover:bg-opacity-25 p-1 rounded-md font-bold mt-auto w-40"
+                  className="btn-outlined-small mt-auto"
                   onClick={handleClick}
                 >
                   Other versions
@@ -212,7 +212,7 @@ export default function BulkCatalogRow({ card }) {
                 </div>
                 {/* Buy button, goes to bottom of the col*/}
                 <button
-                  className="bg-primary hover:bg-purple-500 text-white font-bold p-1 rounded-md w-20 mt-auto"
+                  className="btn-small mt-auto"
                   onClick={() => {
                     //open selectedVariant.link in a new tab
                     window.open(selectedVariant.link, '_blank');
