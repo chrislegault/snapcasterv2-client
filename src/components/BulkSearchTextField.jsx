@@ -19,7 +19,6 @@ export default function BulkSearchTextField() {
                     value={bulkCardInput}
                     onChange={(e) => setBulkCardInput(e.target.value)}
                     rows="20"
-                    maxLength="100"
                 />
                 </div>
             </div>
