@@ -119,7 +119,13 @@ export default function SearchBox({ setSearchTerm }) {
           className="max-w-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary outline-none"
           placeholder="Search for a card"
           required
-          onChange={e => setCardName(e.target.value)}
+          onChange={e => {
+            // we want to setCardName(e.target.value) but we need to replace any
+            // iOS apostrophes with regular apostrophes
+            const cardName = e.target.value.replace(/’/g, "'");
+            setCardName(cardName);
+          
+          }}
           // no autocomplete
           autoComplete="off"
         />

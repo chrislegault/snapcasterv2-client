@@ -17,8 +17,20 @@ export default function BulkSearchTextField() {
                 <textarea
                     className="w-full rounded-md border border-gray-300 dark:border-darkBackground dark:bg-darkerBackground"
                     value={bulkCardInput}
-                    onChange={(e) => setBulkCardInput(e.target.value)}
                     rows="20"
+                    onChange={(e) => {
+                        // we want setBulkCardInput(e.target.value)}
+                        // but we need to limit the number of lines to 100
+                        // and replace any iOS apostrophes with regular apostrophes
+                        const lines = e.target.value.split('\n')
+                        if (lines.length > 100) {
+                            return
+                        }
+                        const newBulkCardInput = lines
+                            .map((line) => line.replace(/’/g, "'"))
+                            .join('\n')
+                        setBulkCardInput(newBulkCardInput)
+                    }}
                 />
                 </div>
             </div>
