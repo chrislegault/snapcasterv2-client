@@ -106,7 +106,7 @@ export default function SearchBox({ setSearchTerm }) {
         setLoading(false);
       });
   };
-
+// test
   return (
     <div className="mt-5">
       <form
