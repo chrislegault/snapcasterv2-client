@@ -112,7 +112,7 @@ export default function SearchBox({ setSearchTerm }) {
       <form
         className="flex flex-row space-x-2 justify-center"
         onSubmit={handleSubmit}
-      >
+      >  
         <input
           type="text"
           id="card_search"
