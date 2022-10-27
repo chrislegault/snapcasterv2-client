@@ -1,6 +1,11 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { singleCardResults, sortOrderAtom, listViewAtom } from '../atoms';
+import {
+  singleCardResults,
+  sortOrderAtom,
+  listViewAtom,
+  filteredSingleCardResults,
+} from '../atoms';
 import { sortResults } from '../utils';
 
 export default function SearchResultsInfo({ numResults, searchTerm }) {
@@ -8,20 +13,42 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
   const [sortOrder, setSortOrder] = useAtom(sortOrderAtom);
   const [results, setResults] = useAtom(singleCardResults);
   const [listView, setListView] = useAtom(listViewAtom);
+  const [filteredResults, setFilteredResults] = useAtom(
+    filteredSingleCardResults,
+  );
+  const [foilFilter, setFoilFilter] = React.useState(false);
 
   const handleSortByChange = e => {
     setSortedBy(e.target.value);
     const sortedResults = sortResults(results, e.target.value, sortOrder);
-    setResults(sortedResults);
+    setFilteredResults(sortedResults);
   };
 
   const handleSortOrderChange = e => {
     setSortOrder(e.target.value);
-    setResults([...results].reverse());
+    const sortedResults = sortResults(results, sortedBy, e.target.value);
+    setFilteredResults(sortedResults);
   };
 
   const toggleListView = () => {
     setListView(!listView);
+  };
+
+  const toggleFoilFilter = () => {
+    // If foil filter is on, filter out non-foil result from filteredResults
+    // if it's off, set filteredResults sortResults(results, sortedBy, sortOrder)
+    if (foilFilter) {
+      console.log('setting to all cards');
+      const sorted = sortResults(results, sortedBy, sortOrder);
+      setFilteredResults(sorted);
+      setFoilFilter(false);
+    }
+    if (!foilFilter) {
+      console.log('filtering out the non-foils');
+      const filtered = filteredResults.filter(result => result.foil === true);
+      setFilteredResults(filtered);
+      setFoilFilter(true);
+    }
   };
 
   return (
@@ -31,6 +58,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
           <div className="mx-2 md:col-span-3">
+            Foil filter is {foilFilter ? 'on' : 'off'}
             {numResults} results found for "{searchTerm}"
           </div>
           {/* Sort selector */}
@@ -53,6 +81,25 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
+          </div>
+          <div>
+            {/* foil toggle */}
+            <div className="flex items-center md:col-span-1">
+              <span className="mx-2">Foil:</span>
+              <label
+                htmlFor="foil-toggle"
+                className="inline-flex relative items-center cursor-pointer"
+              >
+                <input
+                  type="checkbox"
+                  value=""
+                  id="foil-toggle"
+                  className="sr-only peer"
+                  onClick={toggleFoilFilter}
+                />
+                <div className="w-7 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary dark:peer-focus:ring-primary rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+              </label>
+            </div>
           </div>
           <div>
             {/* list view toggle */}

@@ -5,6 +5,7 @@ import {
   hideWelcomeMessage,
   sortedByAtom,
   sortOrderAtom,
+  filteredSingleCardResults
 } from '../atoms';
 import axios from 'axios';
 import { sortResults } from '../utils';
@@ -86,6 +87,7 @@ export default function SearchBox({ setSearchTerm }) {
   const [results, setResults] = useAtom(singleCardResults);
   const [hideWelcome, setHideWelcome] = useAtom(hideWelcomeMessage);
   const [loading, setLoading] = React.useState(false);
+  const [filteredResults, setFilteredResults] = useAtom(filteredSingleCardResults);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -110,9 +112,11 @@ export default function SearchBox({ setSearchTerm }) {
         ],
       })
       .then(res => {
-        // filter res.data by sortedBy
+        // Set the raw results to the atom
+        setResults(res.data);
+        // Sort the results and set the shown FilteredResults
         const sortedResults = sortResults(res.data, sortedBy, sortOrder);
-        setResults(sortedResults);
+        setFilteredResults(sortedResults);
         setHideWelcome(true);
         setSearchTerm(cardName);
         setLoading(false);
