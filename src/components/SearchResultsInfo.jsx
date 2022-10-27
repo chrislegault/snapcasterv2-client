@@ -38,13 +38,11 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
     // If foil filter is on, filter out non-foil result from filteredResults
     // if it's off, set filteredResults sortResults(results, sortedBy, sortOrder)
     if (foilFilter) {
-      console.log('setting to all cards');
       const sorted = sortResults(results, sortedBy, sortOrder);
       setFilteredResults(sorted);
       setFoilFilter(false);
     }
     if (!foilFilter) {
-      console.log('filtering out the non-foils');
       const filtered = filteredResults.filter(result => result.foil === true);
       setFilteredResults(filtered);
       setFoilFilter(true);
