@@ -20,13 +20,13 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
 
   const handleSortByChange = e => {
     setSortedBy(e.target.value);
-    const sortedResults = sortResults(results, e.target.value, sortOrder);
+    const sortedResults = sortResults(filteredResults, e.target.value, sortOrder);
     setFilteredResults(sortedResults);
   };
 
   const handleSortOrderChange = e => {
     setSortOrder(e.target.value);
-    const sortedResults = sortResults(results, sortedBy, e.target.value);
+    const sortedResults = sortResults(filteredResults, sortedBy, e.target.value);
     setFilteredResults(sortedResults);
   };
 
