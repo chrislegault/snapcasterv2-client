@@ -9,6 +9,24 @@ export default function StoreRadioButtons() {
       <div className="flex flex-row space-x-1">
           <input
             type="checkbox"
+            id="topdeckhero"
+            value="topdeckhero"
+            checked={selectedStores.includes('topdeckhero')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="topdeckhero">Topdeck Hero</label>
+        </div>
+      <div className="flex flex-row space-x-1">
+          <input
+            type="checkbox"
             id="connectiongames"
             value="connectiongames"
             checked={selectedStores.includes('connectiongames')}

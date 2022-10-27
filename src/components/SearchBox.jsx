@@ -1,9 +1,13 @@
 import React from 'react';
 import { useAtom, useAtomValue } from 'jotai';
-import { singleCardResults, hideWelcomeMessage, sortedByAtom, sortOrderAtom } from '../atoms';
+import {
+  singleCardResults,
+  hideWelcomeMessage,
+  sortedByAtom,
+  sortOrderAtom,
+} from '../atoms';
 import axios from 'axios';
 import { sortResults } from '../utils';
-
 
 export default function SearchBox({ setSearchTerm }) {
   const dummydata = [
@@ -91,7 +95,18 @@ export default function SearchBox({ setSearchTerm }) {
     axios
       .post(`${import.meta.env.VITE_API_URI}/search/single/`, {
         cardName,
-        websites: ['four01', 'gauntlet', 'fusion', 'houseofcards', 'kanatacg', 'everythinggames', 'magicstronghold', 'facetoface', 'connectiongames'],
+        websites: [
+          'four01',
+          'gauntlet',
+          'fusion',
+          'houseofcards',
+          'kanatacg',
+          'everythinggames',
+          'magicstronghold',
+          'facetoface',
+          'connectiongames',
+          'topdeckhero'
+        ],
       })
       .then(res => {
         // filter res.data by sortedBy
@@ -106,13 +121,13 @@ export default function SearchBox({ setSearchTerm }) {
         setLoading(false);
       });
   };
-// test
+  // test
   return (
     <div className="mt-5">
       <form
         className="flex flex-row space-x-2 justify-center"
         onSubmit={handleSubmit}
-      >  
+      >
         <input
           type="text"
           id="card_search"
@@ -124,15 +139,11 @@ export default function SearchBox({ setSearchTerm }) {
             // iOS apostrophes with regular apostrophes
             const cardName = e.target.value.replace(/’/g, "'");
             setCardName(cardName);
-          
           }}
           // no autocomplete
           autoComplete="off"
         />
-        <button
-          type="submit"
-          className="btn"
-        >
+        <button type="submit" className="btn">
           Search
         </button>
       </form>
