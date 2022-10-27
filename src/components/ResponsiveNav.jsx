@@ -6,7 +6,7 @@ export default function ResponsiveNav() {
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
   return (
-    <nav className="bg-gray-600 px-2 sm:px-4 py-2.5 rounded-md m-2 dark:bg-darkerBackground">
+    <nav className="bg-gray-600 px-2 sm:px-4 py-2.5 rounded-md dark:bg-darkerBackground">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to='/' className="flex items-center">
           <img src="logo.png" className="mr-3 h-6 sm:h-9" alt="snapcaster logo" />
@@ -28,7 +28,7 @@ export default function ResponsiveNav() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
               clip-rule="evenodd"
             ></path>
