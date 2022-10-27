@@ -105,7 +105,8 @@ export default function SearchBox({ setSearchTerm }) {
           'magicstronghold',
           'facetoface',
           'connectiongames',
-          'topdeckhero'
+          'topdeckhero',
+          'jeux3dragons',
         ],
       })
       .then(res => {
