@@ -16,6 +16,7 @@ const websiteLogos = {
   facetoface: 'https://i.ibb.co/W2bPWdK/logo-colored-1.png',
   connectiongames: 'https://i.ibb.co/vBX8vQ0/connectiongames-inverted.png',
   topdeckhero: 'https://i.ibb.co/84fG8B3/topdeckhero.png',
+  jeux3dragons: 'https://d1rw89lz12ur5s.cloudfront.net/store/jeux3dragons/ef00baaca6ad43cfb51939c1af74c2c7/large/logo.png',
 };
 
 export default function SearchRow({ cardData }) {
