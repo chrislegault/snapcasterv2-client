@@ -12,7 +12,7 @@ export default function Layout({ children }) {
         {/* background for whole app */}
         {/* Background should always span 100% height even if height changes */}
         
-        <div className="bg-white dark:bg-darkBackground h-full w-full dark:text-white">
+        <div className="bg-white dark:bg-darkBackground min-h-screen h-full w-full dark:text-white">
           <ResponsiveNav />
           {children}
         </div>
