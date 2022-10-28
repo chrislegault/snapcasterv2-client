@@ -28,3 +28,5 @@ export const selectedBulkInfoAtom = atom({
     numCardsSelected: 0,
     priceOfSelected: 0,
 });
+
+export const foilFilterAtom = atom(false);

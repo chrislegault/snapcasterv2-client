@@ -5,6 +5,7 @@ import {
   sortOrderAtom,
   listViewAtom,
   filteredSingleCardResults,
+  foilFilterAtom
 } from '../atoms';
 import { sortResults } from '../utils';
 
@@ -16,7 +17,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
   const [filteredResults, setFilteredResults] = useAtom(
     filteredSingleCardResults,
   );
-  const [foilFilter, setFoilFilter] = React.useState(false);
+  const [foilFilter, setFoilFilter] = useAtom(foilFilterAtom);
 
   const handleSortByChange = e => {
     setSortedBy(e.target.value);
@@ -90,6 +91,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
                 <input
                   type="checkbox"
                   value=""
+                  checked={foilFilter}
                   id="foil-toggle"
                   className="sr-only peer"
                   onClick={toggleFoilFilter}
@@ -109,6 +111,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
                 <input
                   type="checkbox"
                   value=""
+                  checked={listView}
                   id="list-view-toggle"
                   className="sr-only peer"
                   onClick={toggleListView}
