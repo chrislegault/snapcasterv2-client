@@ -26,7 +26,7 @@ export default function StoreRadioButtons() {
     <div className=" rounded-md bg-darkerBackground p-3 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 space-y-3 text-sm">
         {/* ATLAS */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="atlas"
@@ -46,7 +46,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* CONNECTION GAMES */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="connectiongames"
@@ -66,7 +66,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* EVERYTHING GAMES */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="everythinggames"
@@ -86,7 +86,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* EXOR GAMES */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="exorgames"
@@ -106,7 +106,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* FACE TO FACE */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="facetoface"
@@ -126,7 +126,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* 401 GAMES */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="four01"
@@ -146,7 +146,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* FUSION */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="fusion"
@@ -166,7 +166,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* GAMEKNIGHT */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="gameknight"
@@ -186,7 +186,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* GAMEZILLA */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="gamezilla"
@@ -206,7 +206,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* GAUNTLET */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="gauntlet"
@@ -226,7 +226,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* HAIRYT */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="hairyt"
@@ -246,7 +246,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* HOUSE OF CARDS */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="houseofcards"
@@ -266,7 +266,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* JEUX3DRAGONS */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="jeux3dragons"
@@ -286,7 +286,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* MTG STRONGHOLD */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="magicstronghold"
@@ -306,7 +306,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* SEQUENCE */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="sequencegaming"
@@ -326,7 +326,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* TOPDECKHERO */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="topdeckhero"
@@ -346,7 +346,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* WIZARDS TOWER */}
-        <div className="flex flex-row col-span-1 space-x-1 items-center">
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
             type="checkbox"
             id="kanatacg"
@@ -377,7 +377,7 @@ export default function StoreRadioButtons() {
               // else select all
               setSelectedStores(storeList);
             }
-            
+
           }}
         >
           Select All
