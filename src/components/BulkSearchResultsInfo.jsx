@@ -10,30 +10,22 @@ import { bulkCardResultsAtom,
 
 export default function BulkSearchResultsInfo({numResults}) {
   const missingCardNames = useAtomValue(missingCardNamesAtom);
-  const dummyMissingCards = ['Foil Island', 'Austere Command'];
   const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
   const expectedBulkCardCount = useAtomValue(expectedBulkCardCountAtom);
-  const [selectedCatalogRowsPrice, setSelectedCatalogRowsPrice] = useAtom(selectedCatalogRowsPriceAtom);
   const [bulkCardResults, setBulkCardResults] = useAtom(bulkCardResultsAtom);
-
-// -------------------------------
   const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
 
   useEffect(() => {
     setSelectedBulkInfo({
       ...selectedBulkInfo,
       numCardsSelected: selectedCatalogRows.length,
-      // priceOfSelected is either the sum of the prices of the selected cards, or 0 if there are no selected cards
       priceOfSelected: selectedCatalogRows.length > 0 ? (
         selectedCatalogRows.reduce((acc, row) => {
           return acc + row.selectedVariant.price;
         }, 0)
       ) : 0,
-      // priceOfSelected: selectedCatalogRows.reduce((acc, row) => acc + row.selectedVariant.price ),
     });
   }, [selectedCatalogRows]);
-
-
 
 
   return (
@@ -46,20 +38,6 @@ export default function BulkSearchResultsInfo({numResults}) {
           {/* round the price of selected to 2 decimals */}
           <div className="text-xs md:text-sm">Price of selected: ${selectedBulkInfo && parseFloat(selectedBulkInfo.priceOfSelected).toFixed(2)}</div>
            {/* Select all button  */}
-           <button className="btn bg-cyan-200"
-            onClick={() => {
-              console.log(selectedCatalogRows);
-            }}
-           >
-            log selectedCatalogRows
-           </button>
-           <button className="btn bg-indigo-200"
-            onClick={() => {
-              console.log(bulkCardResults);
-            }}
-            >
-            log bulkCardResults
-            </button>
            <button className="btn-small"
             onClick={() => {
               // if length of selectedCatalogRows is equal to length of bulkCardResults, then deselect all

@@ -4,8 +4,6 @@ import VariantSelectorModal from './VariantSelectorModal';
 import { useAtom } from 'jotai';
 import {
   selectedCatalogRowsAtom,
-  selectedCatalogRowsPriceAtom,
-  selectedCatalogRowsQuantityAtom,
   selectedBulkInfoAtom,
 } from '../atoms';
 

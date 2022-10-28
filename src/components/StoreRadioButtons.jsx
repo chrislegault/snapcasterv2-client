@@ -366,7 +366,7 @@ export default function StoreRadioButtons() {
         </div>
       </div>
       {/* select all button */}
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-row justify-center mt-3">
         <button
           className="btn-small"
           onClick={() => {
