@@ -23,7 +23,7 @@ export default function StoreRadioButtons() {
     'topdeckhero',
   ]
   return (
-    <div className=" rounded-md bg-darkerBackground p-3 ">
+    <div className=" rounded-md bg-gray-300 dark:bg-darkerBackground p-3 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 space-y-3 text-sm">
         {/* ATLAS */}
         <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
