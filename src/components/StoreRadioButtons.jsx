@@ -27,6 +27,24 @@ export default function StoreRadioButtons() {
         <div className="flex flex-row space-x-1">
           <input
             type="checkbox"
+            id="atlas"
+            value="atlas"
+            checked={selectedStores.includes('atlas')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="facetoface">Atlas Collectables</label>
+        </div>
+        <div className="flex flex-row space-x-1">
+          <input
+            type="checkbox"
             id="sequencegaming"
             value="sequencegaming"
             checked={selectedStores.includes('sequencegaming')}

@@ -110,6 +110,7 @@ export default function SearchBox({ setSearchTerm }) {
           'topdeckhero',
           'jeux3dragons',
           'sequencegaming',
+          'atlas'
         ],
       })
       .then(res => {

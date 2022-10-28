@@ -17,7 +17,8 @@ const websiteLogos = {
   connectiongames: 'https://i.ibb.co/vBX8vQ0/connectiongames-inverted.png',
   topdeckhero: 'https://d1rw89lz12ur5s.cloudfront.net/store/topdeckhero/1fdf9e60cbd911e7aefa7116e0c551f9/large/topdeckhero.png',
   jeux3dragons: 'https://d1rw89lz12ur5s.cloudfront.net/store/jeux3dragons/ef00baaca6ad43cfb51939c1af74c2c7/large/logo.png',
-  sequencegaming: 'https://i.ibb.co/C2jXrmD/sequence-no-bg-inverted.png'
+  sequencegaming: 'https://i.ibb.co/C2jXrmD/sequence-no-bg-inverted.png',
+  atlas: 'https://d1rw89lz12ur5s.cloudfront.net/store/atlascollectables/a9e1fed8d2d549cba92c6406b18f8969/large/logo-v2-small-v2.png'
 };
 
 export default function SearchRow({ cardData }) {
