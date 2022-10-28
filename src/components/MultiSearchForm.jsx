@@ -69,8 +69,23 @@ export default function MultiSearchForm() {
       })
       .then(response => {
         setLoading(false);
-        setBulkCardResults(response.data);
-
+        console.log(response.data)
+        // we need to find the cheapest variant for each card, and set that as the selected variant
+        const cardResults = response.data.map(card => {
+          // sort the variants by price
+          const sortedVariants = card.variants.sort(
+            (a, b) => a.price - b.price,
+          );
+          // set the cheapest variant as the selected variant
+          const cheapestVariant = sortedVariants[0];
+          return {
+            ...card,
+            variants: sortedVariants,
+            selectedVariant: cheapestVariant,
+          }
+        });
+        console.log("setBulkCardResults ", cardResults)
+        setBulkCardResults(cardResults);
         // response.data is an array of card objects
         // {
         //   cardName,

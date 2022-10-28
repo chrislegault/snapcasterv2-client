@@ -24,13 +24,7 @@ export default function BulkCatalogView() {
         setBulkCardResults(null);
         setExpectedBulkCardCount(0);
         setMissingCardNames([]);
-        setSelectedCatalogRowsPrice(0);
         setSelectedCatalogRows([]);
-        setSelectedBulkInfo({
-            numCardsSelected: 0,
-            priceOfSelected: 0,
-        });
-
     }
 
   return (

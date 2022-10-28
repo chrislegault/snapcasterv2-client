@@ -19,42 +19,37 @@ const conditionPriorityMap = {
 };
 export default function BulkCatalogRow({ card }) {
   const [open, setOpen] = useState(false);
-  const [rowSelected, setRowSelected] = useState(false);
 
-  const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(
-    selectedCatalogRowsAtom,
-  );
+  const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
+
+  // rowSelected should be updated whenever selectedCatalogRows changes
+  const [rowSelected, setRowSelected] = useState(false);
+  useEffect(() => {
+    // if the card is in selectedCatalogRows, then set rowSelected to true
+    if (selectedCatalogRows.find((row) => row.cardName === card.cardName)) {
+      setRowSelected(true);
+    } else {
+      setRowSelected(false);
+    }
+  }, [selectedCatalogRows]);
+
+    // const [rowSelected, setRowSelected] = useState(false);
+
   // This is randomly initialized to the first card in the list
-  const [selectedVariant, setSelectedVariant] = useState(card.variants[0]);
   const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
 
   const toggleSelectCard = () => {
     // if the row is selected, remove it from the selectedCatalogRows
     if (rowSelected) {
+      console.log("row was already selected, removing it from selectedCatalogRows");
       setSelectedCatalogRows(
-        selectedCatalogRows.filter(row => row.cardName !== card.name),
+        selectedCatalogRows.filter((row) => row.cardName !== card.cardName)
       );
-      setSelectedBulkInfo({
-        ...selectedBulkInfo,
-        numCardsSelected: selectedBulkInfo.numCardsSelected - 1,
-        priceOfSelected:
-          selectedBulkInfo.priceOfSelected - selectedVariant.price,
-      });
-      setRowSelected(false);
     }
     // if the row is not selected, add it to the selectedCatalogRows
     else {
-      setSelectedCatalogRows([
-        ...selectedCatalogRows,
-        { cardName: card.name, variant: selectedVariant },
-      ]);
-      setSelectedBulkInfo({
-        ...selectedBulkInfo,
-        numCardsSelected: selectedBulkInfo.numCardsSelected + 1,
-        priceOfSelected:
-          selectedBulkInfo.priceOfSelected + selectedVariant.price,
-      });
-      setRowSelected(true);
+      console.log("adding card to selectedCatalogRows");
+      setSelectedCatalogRows([...selectedCatalogRows, card]);
     }
   };
 
@@ -69,14 +64,14 @@ export default function BulkCatalogRow({ card }) {
       {open && (
         <VariantSelectorModal
           cardVariants={card.variants}
-          selectedVariant={selectedVariant}
-          setSelectedVariant={setSelectedVariant}
+          selectedVariant={card.selectedVariant}
+          setSelectedVariant={() => {console.log("setSelectedVariant")}}
           open={open}
           setOpen={setOpen}
-          isSelected={rowSelected}
+          isSelected={false} // change this
         />
       )}
-      {selectedVariant && (
+      {card.selectedVariant && (
         <div>
           {/* SMALL LAYOUT */}
           {/* center everything in a column */}
@@ -85,7 +80,7 @@ export default function BulkCatalogRow({ card }) {
             <div className="relative w-7/12">
               <img
                 className="rounded-md w-full"
-                src={selectedVariant.image}
+                src={card.selectedVariant.image}
                 alt={card.name}
               />
               {/* Card Details */}
@@ -97,13 +92,13 @@ export default function BulkCatalogRow({ card }) {
                       {/* the card names can be long, make sure they don't overflow the column or span multiple lines */}
 
                       <div className="text-sm font-bold truncate overflow-ellipsis overflow-hidden">
-                        {selectedVariant.name}
+                        {card.selectedVariant.name}
                       </div>
                       <div className="text-xs truncate overflow-ellipsis overflow-hidden">
-                        {selectedVariant.set}
+                        {card.selectedVariant.set}
                       </div>
 
-                      <div className="text-xs">{selectedVariant.website}</div>
+                      <div className="text-xs">{card.selectedVariant.website}</div>
 
                       {/* Button to open the modal for changing the selectedVariant */}
 
@@ -118,13 +113,13 @@ export default function BulkCatalogRow({ card }) {
                     <div className="col-span-1" />
                     <div className="col-span-3 text-end">
                       <div className="text-sm font-bold">
-                        ${selectedVariant.price}
+                        ${card.selectedVariant.price}
                       </div>
 
                       <div className="text-xs font-bold">
-                        {selectedVariant.condition}
+                        {card.selectedVariant.condition}
                       </div>
-                      {selectedVariant.foil && (
+                      {card.selectedVariant.foil && (
                         <div className="text-xs font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
                           Foil
                         </div>
@@ -141,11 +136,15 @@ export default function BulkCatalogRow({ card }) {
               <div className="mr-auto flex flex-row">
                 <div className="mr-1">Select</div>
                 {/* Selector Checkbox */}
-                <div className="col-span-1 flex justify-center items-center">
+                <div className="col-span-1 flex justify-center items-center accent-primary">
                   <input
                     type="checkbox"
-                    checked={rowSelected}
+                    checked={
+                      // if the card is in selectedCatalogRows, it is selected
+                     rowSelected 
+                    }
                     onChange={toggleSelectCard}
+                        
                   />
                 </div>
               </div>
@@ -168,7 +167,7 @@ export default function BulkCatalogRow({ card }) {
           <div className="hidden sm:flex sm:flex-col p-2 hover:backdrop-brightness-75 rounded-md">
             <div className="grid grid-cols-12">
               {/* Selector Checkbox */}
-              <div className="col-span-1 flex justify-center items-center">
+              <div className="col-span-1 flex justify-center items-center accent-primary">
                 <input
                   type="checkbox"
                   checked={rowSelected}
@@ -178,15 +177,15 @@ export default function BulkCatalogRow({ card }) {
 
               {/* Image */}
               <img
-                src={selectedVariant.image}
+                src={card.selectedVariant.image}
                 alt="card"
                 className="sm:w-24 sm:rounded-md h-fit col-span-2"
               />
               {/* Card Details col 1 */}
               <div className="flex flex-col p-2 col-span-5">
-                <div className="text-md font-bold">{selectedVariant.name}</div>
-                <div className="text-sm">{selectedVariant.set}</div>
-                <div className="text-sm">{selectedVariant.website}</div>
+                <div className="text-md font-bold">{card.selectedVariant.name}</div>
+                <div className="text-sm">{card.selectedVariant.set}</div>
+                <div className="text-sm">{card.selectedVariant.website}</div>
                                 {/* Button to open modal to switch selectedVariant */}
                                 <button
                   className="btn-outlined-small mt-auto"
@@ -200,22 +199,22 @@ export default function BulkCatalogRow({ card }) {
               {/* make this column go to the end of the parent flex row */}
 
               <div className="flex flex-col ml-auto text-right p-2 col-span-4">
-                <div className="font-bold text-md">${selectedVariant.price}</div>
+                <div className="font-bold text-md">${card.selectedVariant.price}</div>
 
                 <div className="flex flex-row space-x-2 justify-end">
-                  {selectedVariant.foil && (
+                  {card.selectedVariant.foil && (
                     <div className="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
                       Foil
                     </div>
                   )}
-                  <div className="text-sm font-bold">{selectedVariant.condition}</div>
+                  <div className="text-sm font-bold">{card.selectedVariant.condition}</div>
                 </div>
                 {/* Buy button, goes to bottom of the col*/}
                 <button
                   className="btn-small mt-auto"
                   onClick={() => {
                     //open selectedVariant.link in a new tab
-                    window.open(selectedVariant.link, '_blank');
+                    window.open(card.selectedVariant.link, '_blank');
                   }}
                 >
                   Buy

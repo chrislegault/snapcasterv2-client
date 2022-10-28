@@ -13,11 +13,25 @@ export default function BulkSearchResultsInfo({numResults}) {
   const dummyMissingCards = ['Foil Island', 'Austere Command'];
   const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
   const expectedBulkCardCount = useAtomValue(expectedBulkCardCountAtom);
-  const selectedCatalogRowsPrice = useAtomValue(selectedCatalogRowsPriceAtom);
+  const [selectedCatalogRowsPrice, setSelectedCatalogRowsPrice] = useAtom(selectedCatalogRowsPriceAtom);
+  const bulkCardResults = useAtomValue(bulkCardResultsAtom);
 
 // -------------------------------
   const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
 
+  useEffect(() => {
+    setSelectedBulkInfo({
+      ...selectedBulkInfo,
+      numCardsSelected: selectedCatalogRows.length,
+      // priceOfSelected is either the sum of the prices of the selected cards, or 0 if there are no selected cards
+      priceOfSelected: selectedCatalogRows.length > 0 ? (
+        selectedCatalogRows.reduce((acc, row) => {
+          return acc + row.selectedVariant.price;
+        }, 0)
+      ) : 0,
+      // priceOfSelected: selectedCatalogRows.reduce((acc, row) => acc + row.selectedVariant.price ),
+    });
+  }, [selectedCatalogRows]);
 
 
 
@@ -31,7 +45,39 @@ export default function BulkSearchResultsInfo({numResults}) {
           <div className="text-xs md:text-sm">{selectedBulkInfo.numCardsSelected} cards selected</div>
           {/* round the price of selected to 2 decimals */}
           <div className="text-xs md:text-sm">Price of selected: ${selectedBulkInfo.priceOfSelected.toFixed(2)}</div>
-        
+           {/* Select all button  */}
+           <button className="btn bg-cyan-200"
+            onClick={() => {
+              console.log(selectedCatalogRows);
+            }}
+           >
+            log selectedCatalogRows
+           </button>
+           <button className="btn-small"
+            onClick={() => {
+              // if length of selectedCatalogRows is equal to length of bulkCardResults, then deselect all
+              if (selectedCatalogRows.length === bulkCardResults.length) {
+                console.log("clearing all")
+                console.log("SelectedCatalogRows before clearing: ", selectedCatalogRows)
+                // go through each row in bulkCardResults and set selected to false
+                
+                setSelectedCatalogRows([]);
+                // 
+              } else {
+                console.log("selecting all")
+
+                setSelectedCatalogRows(bulkCardResults.map(row => {
+                  return {
+                    ...row,
+                  }
+                }))
+                console.log("SelectedCatalogRows after selecting all: ", selectedCatalogRows)
+              }
+            }}
+          >
+            Select all
+          </button>
+
         {missingCardNames.length > 0 && <div>
           <div className="text-xs md:text-sm">
             We couldn't any results for these cards:
