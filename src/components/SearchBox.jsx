@@ -98,21 +98,7 @@ export default function SearchBox({ setSearchTerm }) {
       .post(`${import.meta.env.VITE_API_URI}/search/single/`, {
         cardName,
         websites: [
-          'four01',
-          'gauntlet',
-          'fusion',
-          'houseofcards',
-          'kanatacg',
-          'everythinggames',
-          'magicstronghold',
-          'facetoface',
-          'connectiongames',
-          'topdeckhero',
-          'jeux3dragons',
-          'sequencegaming',
-          'atlas',
-          'hairyt',
-          'gamezilla',
+          'all',
         ],
       })
       .then(res => {

@@ -66,6 +66,26 @@ export default function StoreRadioButtons() {
           <label htmlFor="everythinggames">Everything Games</label>
         </div>
 
+        {/* EXOR GAMES */}
+        <div className="flex flex-row space-x-1">
+          <input
+            type="checkbox"
+            id="exorgames"
+            value="exorgames"
+            checked={selectedStores.includes('exorgames')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="exorgames">Exor Games</label>
+        </div>
+
         {/* FACE TO FACE */}
         <div className="flex flex-row space-x-1">
           <input
@@ -125,7 +145,7 @@ export default function StoreRadioButtons() {
           />
           <label htmlFor="fusion">Fusion Gaming</label>
         </div>
-        
+
         {/* GAMEZILLA */}
         <div className="flex flex-row space-x-1">
           <input
