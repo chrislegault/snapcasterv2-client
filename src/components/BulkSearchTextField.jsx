@@ -17,7 +17,7 @@ export default function BulkSearchTextField() {
           <textarea
             className="w-full rounded-md border border-gray-300 dark:border-darkBackground dark:bg-darkerBackground p-3"
             value={bulkCardInput}
-            rows="20"
+            rows="10"
             onChange={e => {
               // we want setBulkCardInput(e.target.value)}
               // but we need to limit the number of lines to 100
