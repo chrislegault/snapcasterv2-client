@@ -47,21 +47,29 @@ export default function ResponsiveNav() {
                 Home
               </Link>{' '}
             </li>
+
             <li>
               <Link
-                to="/about"
+                to="/sealed-search"
                 className="block py-2 pr-4 pl-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                About
+                Sealed Search
               </Link>
             </li>
-
             <li>
               <Link
                 to='/multi-search'
                 className="block py-2 pr-4 pl-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Multi Search
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className="block py-2 pr-4 pl-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                About
               </Link>
             </li>
             <li>
