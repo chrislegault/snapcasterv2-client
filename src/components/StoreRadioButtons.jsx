@@ -3,11 +3,30 @@ import { useAtom } from 'jotai';
 import { selectedBulkStoresAtom } from '../atoms';
 export default function StoreRadioButtons() {
   const [selectedStores, setSelectedStores] = useAtom(selectedBulkStoresAtom);
+  const storeList = [
+    'atlas',
+    'everythinggames',
+    'facetoface',
+    'fusion',
+    'gamezilla',
+    'hairyt',
+    'jeux3dragons',
+    'sequencegaming',
+    'kanatacg',
+    'connectiongames',
+    'exorgames',
+    'four01',
+    'gameknight',
+    'gauntlet',
+    'houseofcards',
+    'magicstronghold',
+    'topdeckhero',
+  ]
   return (
-    <div>
-      <div className="flex flex-col space-y-1 text-sm">
+    <div className=" rounded-md bg-darkerBackground p-3 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 space-y-3 text-sm">
         {/* ATLAS */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="atlas"
@@ -27,7 +46,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* CONNECTION GAMES */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="connectiongames"
@@ -47,7 +66,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* EVERYTHING GAMES */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="everythinggames"
@@ -67,7 +86,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* EXOR GAMES */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="exorgames"
@@ -87,7 +106,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* FACE TO FACE */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="facetoface"
@@ -107,7 +126,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* 401 GAMES */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="four01"
@@ -127,7 +146,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* FUSION */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="fusion"
@@ -145,9 +164,9 @@ export default function StoreRadioButtons() {
           />
           <label htmlFor="fusion">Fusion Gaming</label>
         </div>
-        
+
         {/* GAMEKNIGHT */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="gameknight"
@@ -167,7 +186,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* GAMEZILLA */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="gamezilla"
@@ -187,7 +206,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* GAUNTLET */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="gauntlet"
@@ -207,7 +226,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* HAIRYT */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="hairyt"
@@ -227,7 +246,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* HOUSE OF CARDS */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="houseofcards"
@@ -247,7 +266,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* JEUX3DRAGONS */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="jeux3dragons"
@@ -267,7 +286,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* MTG STRONGHOLD */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="magicstronghold"
@@ -287,7 +306,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* SEQUENCE */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="sequencegaming"
@@ -307,7 +326,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* TOPDECKHERO */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="topdeckhero"
@@ -327,7 +346,7 @@ export default function StoreRadioButtons() {
         </div>
 
         {/* WIZARDS TOWER */}
-        <div className="flex flex-row space-x-1">
+        <div className="flex flex-row col-span-1 space-x-1 items-center">
           <input
             type="checkbox"
             id="kanatacg"
@@ -345,6 +364,24 @@ export default function StoreRadioButtons() {
           />
           <label htmlFor="kanatacg">Wizard's Tower (kanatacg)</label>
         </div>
+      </div>
+      {/* select all button */}
+      <div className="flex flex-row justify-center">
+        <button
+          className="btn-small"
+          onClick={() => {
+            // if all stores are selected, deselect all
+            if (selectedStores.length === storeList.length) {
+            setSelectedStores([]);
+            } else {
+              // else select all
+              setSelectedStores(storeList);
+            }
+            
+          }}
+        >
+          Select All
+        </button>
       </div>
     </div>
   );
