@@ -2,10 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import VariantSelectorModal from './VariantSelectorModal';
 import { useAtom } from 'jotai';
-import {
-  selectedCatalogRowsAtom,
-  selectedBulkInfoAtom,
-} from '../atoms';
+import { selectedCatalogRowsAtom, selectedBulkInfoAtom } from '../atoms';
 
 const conditionPriorityMap = {
   NM: 1,
@@ -18,20 +15,22 @@ const conditionPriorityMap = {
 export default function BulkCatalogRow({ card }) {
   const [open, setOpen] = useState(false);
 
-  const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
+  const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(
+    selectedCatalogRowsAtom,
+  );
 
   // rowSelected should be updated whenever selectedCatalogRows changes
   const [rowSelected, setRowSelected] = useState(false);
   useEffect(() => {
     // if the card is in selectedCatalogRows, then set rowSelected to true
-    if (selectedCatalogRows.find((row) => row.cardName === card.cardName)) {
+    if (selectedCatalogRows.find(row => row.cardName === card.cardName)) {
       setRowSelected(true);
     } else {
       setRowSelected(false);
     }
   }, [selectedCatalogRows]);
 
-    // const [rowSelected, setRowSelected] = useState(false);
+  // const [rowSelected, setRowSelected] = useState(false);
 
   // This is randomly initialized to the first card in the list
   const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
@@ -40,7 +39,7 @@ export default function BulkCatalogRow({ card }) {
     // if the row is selected, remove it from the selectedCatalogRows
     if (rowSelected) {
       setSelectedCatalogRows(
-        selectedCatalogRows.filter((row) => row.cardName !== card.cardName)
+        selectedCatalogRows.filter(row => row.cardName !== card.cardName),
       );
     }
     // if the row is not selected, add it to the selectedCatalogRows
@@ -58,11 +57,7 @@ export default function BulkCatalogRow({ card }) {
     <div>
       {/* Modal */}
       {open && (
-        <VariantSelectorModal
-          card={card}
-          open={open}
-          setOpen={setOpen}
-        />
+        <VariantSelectorModal card={card} open={open} setOpen={setOpen} />
       )}
       {card.selectedVariant && (
         <div>
@@ -91,7 +86,9 @@ export default function BulkCatalogRow({ card }) {
                         {card.selectedVariant.set}
                       </div>
 
-                      <div className="text-xs">{card.selectedVariant.website}</div>
+                      <div className="text-xs">
+                        {card.selectedVariant.website}
+                      </div>
 
                       {/* Button to open the modal for changing the selectedVariant */}
 
@@ -134,10 +131,9 @@ export default function BulkCatalogRow({ card }) {
                     type="checkbox"
                     checked={
                       // if the card is in selectedCatalogRows, it is selected
-                     rowSelected 
+                      rowSelected
                     }
                     onChange={toggleSelectCard}
-                        
                   />
                 </div>
               </div>
@@ -158,9 +154,21 @@ export default function BulkCatalogRow({ card }) {
 
           {/* SM + LAYOUT */}
           <div className="hidden sm:flex sm:flex-col p-2 hover:backdrop-brightness-75 rounded-md">
-            <div className="grid grid-cols-12">
+            {/* invisible box that is the background of the children elements, if it's clicked, toggleSelectCard */}
+            <div
+              className="grid grid-cols-12"
+              onClick={e => {
+                // if we clicked on this div, and not a child element, then toggleSelectCard
+                if (e.target === e.currentTarget) {
+                  toggleSelectCard();
+                }
+              }}
+            >
               {/* Selector Checkbox */}
-              <div className="col-span-1 flex justify-center items-center accent-primary">
+              <div className="col-span-1 flex justify-center items-center accent-primary"
+                // we want to be able to click anywhere in the col to toggleSelectCard
+                onClick={toggleSelectCard}
+              >
                 <input
                   type="checkbox"
                   checked={rowSelected}
@@ -173,26 +181,39 @@ export default function BulkCatalogRow({ card }) {
                 src={card.selectedVariant.image}
                 alt="card"
                 className="sm:w-24 sm:rounded-md h-fit col-span-2"
+                onClick={toggleSelectCard}
               />
               {/* Card Details col 1 */}
               <div className="flex flex-col p-2 col-span-5">
-                <div className="text-md font-bold">{card.selectedVariant.name}</div>
+                {/* Card Info */}
+                <div className="flex flex-col"
+                  onClick={toggleSelectCard}
+                  >
+                <div className="text-md font-bold">
+                  {card.selectedVariant.name}
+                </div>
                 <div className="text-sm">{card.selectedVariant.set}</div>
                 <div className="text-sm">{card.selectedVariant.website}</div>
-                                {/* Button to open modal to switch selectedVariant */}
-                                <button
+                </div>
+                {/* Button to open modal to switch selectedVariant */}
+                <button
                   className="btn-outlined-small mt-auto"
                   onClick={handleClick}
                 >
                   Other versions
                 </button>
-
               </div>
               {/* Card Details col 2 */}
               {/* make this column go to the end of the parent flex row */}
 
               <div className="flex flex-col ml-auto text-right p-2 col-span-4">
-                <div className="font-bold text-md">${card.selectedVariant.price}</div>
+                {/* Foil, Condition, Price */}
+                <div className="flex flex-col"
+                  onClick={toggleSelectCard}
+                  >
+                <div className="font-bold text-md">
+                  ${card.selectedVariant.price}
+                </div>
 
                 <div className="flex flex-row space-x-2 justify-end">
                   {card.selectedVariant.foil && (
@@ -200,11 +221,14 @@ export default function BulkCatalogRow({ card }) {
                       Foil
                     </div>
                   )}
-                  <div className="text-sm font-bold">{card.selectedVariant.condition}</div>
+                  <div className="text-sm font-bold">
+                    {card.selectedVariant.condition}
+                  </div>
+                </div>
                 </div>
                 {/* Buy button, goes to bottom of the col*/}
                 <button
-                  className="btn-small mt-auto"
+                  className="btn-small mt-auto z-10"
                   onClick={() => {
                     //open selectedVariant.link in a new tab
                     window.open(card.selectedVariant.link, '_blank');
