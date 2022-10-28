@@ -9,31 +9,29 @@ export default function About() {
       <div className="max-w-xl mx-auto space-y-5 mt-5">
         <h1 className="text-3xl font-bold">About</h1>
         <p className="mt-4">
-            This is a simple app that allows you to search for Magic: The Gathering
-            singles listed on Canadian websites. We search all the websites for you
-            and display the results in one place.
+            Snapcaster allows you to search for Magic: The Gathering
+            singles listed on Canadian websites. It will search all the websites for you
+            and display the results in one place. If you have any
+            suggestions or requests, let me know at epplerdev@gmail.com.
         </p>
         <h2 className="text-lg font-bold">
             Support
         </h2>
         <p className="mt-4">
             If you would like to support the project, please consider donating to
-            support our server costs. Right now we are a one person team, and any donations
-            will go towards keeping the site up and running, and a couple redbulls to keep
-            me going while adding more websites!
+            help with the server costs. 
         </p>
         <button className="btn" onClick={openDonationLink}>
             Donate
         </button>
-        <p className="mt-4">
-            If you are a developer and would like to contribute to the project, please email me at
-            epplerdev@gmail.com.
-        </p>
-        <h2>
+        <h2 className="text-lg font-bold">
+            Privacy
+        </h2>
+        <p>
             Privacy and Terms of Service coming soon. I currently log any search queries
             and store them in a database for debugging and basic analytics. I do not 
             share this data with anyone.
-        </h2>
+        </p>
       </div>
     </>
   );
