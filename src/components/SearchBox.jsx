@@ -111,7 +111,8 @@ export default function SearchBox({ setSearchTerm }) {
           'jeux3dragons',
           'sequencegaming',
           'atlas',
-          'hairyt'
+          'hairyt',
+          'gamezilla',
         ],
       })
       .then(res => {

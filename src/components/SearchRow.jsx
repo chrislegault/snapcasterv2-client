@@ -19,7 +19,8 @@ const websiteLogos = {
   jeux3dragons: 'https://d1rw89lz12ur5s.cloudfront.net/store/jeux3dragons/ef00baaca6ad43cfb51939c1af74c2c7/large/logo.png',
   sequencegaming: 'https://i.ibb.co/C2jXrmD/sequence-no-bg-inverted.png',
   atlas: 'https://d1rw89lz12ur5s.cloudfront.net/store/atlascollectables/a9e1fed8d2d549cba92c6406b18f8969/large/logo-v2-small-v2.png',
-  hairyt: 'https://cdn.shopify.com/s/files/1/0266/9513/9533/files/hariyt-horizontal-logo.png?v=1615403256'
+  hairyt: 'https://cdn.shopify.com/s/files/1/0266/9513/9533/files/hariyt-horizontal-logo.png?v=1615403256',
+  gamezilla: 'https://cdn.shopify.com/s/files/1/0570/6308/0145/files/Screen_Shot_2018-09-07_at_1.02.57_PM_copy_141x.png?v=1626814255'
 };
 
 export default function SearchRow({ cardData }) {
