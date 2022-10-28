@@ -145,6 +145,26 @@ export default function StoreRadioButtons() {
           />
           <label htmlFor="fusion">Fusion Gaming</label>
         </div>
+        
+        {/* GAMEKNIGHT */}
+        <div className="flex flex-row space-x-1">
+          <input
+            type="checkbox"
+            id="gameknight"
+            value="gameknight"
+            checked={selectedStores.includes('gameknight')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="gameknight">GameKnight</label>
+        </div>
 
         {/* GAMEZILLA */}
         <div className="flex flex-row space-x-1">
