@@ -24,6 +24,24 @@ export default function StoreRadioButtons() {
           />
           <label htmlFor="jeux3dragons">Jeux 3 Dragons</label>
         </div>
+        <div className="flex flex-row space-x-1">
+          <input
+            type="checkbox"
+            id="sequencegaming"
+            value="sequencegaming"
+            checked={selectedStores.includes('sequencegaming')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="facetoface">Sequence Gaming Brockville</label>
+        </div>
       <div className="flex flex-row space-x-1">
           <input
             type="checkbox"

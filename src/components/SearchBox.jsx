@@ -109,6 +109,7 @@ export default function SearchBox({ setSearchTerm }) {
           'connectiongames',
           'topdeckhero',
           'jeux3dragons',
+          'sequencegaming',
         ],
       })
       .then(res => {
