@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { useSetAtom, useAtom } from 'jotai';
-import { selectedBulkInfoAtom } from '../atoms';
+import { selectedCatalogRowsAtom, bulkCardResultsAtom } from '../atoms';
 
 export default function VariantSelectorModal({
-  cardVariants,
-  selectedVariant,
-  setSelectedVariant,
+  card,
   open,
   setOpen,
-  isSelected,
 }) {
   // basic popup modal
-
-  const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
+  const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
+  const [bulkCardResults, setBulkCardResults] = useAtom(bulkCardResultsAtom);
 
   return (
     <div>
@@ -43,7 +40,7 @@ export default function VariantSelectorModal({
           <div className="p-4">
             {/* Map out the variants into a scrolling box */}
             <div className="overflow-y-scroll h-96">
-              {cardVariants.map((variant, index) => (
+              {card.variants.map((variant, index) => (
                 <div
                   key={index}
                   className="flex justify-between items-center p-2 hover:backdrop-brightness-75 rounded-md"
@@ -72,18 +69,19 @@ export default function VariantSelectorModal({
                   <button
                     className="btn-small mt-2"
                     onClick={() => {
-                        // update the selectedBulkInfo to reflect the price change
-                        if (isSelected) {
-                        setSelectedBulkInfo({
-                          ...selectedBulkInfo,
-                          priceOfSelected:
-                            selectedBulkInfo.priceOfSelected -
-                            selectedVariant.price +
-                            variant.price,
-                        });
-                      }
-                        // update the selectedVariant
-                        setSelectedVariant(variant);
+                      // change the selectedVariant in the card object in the bulkCardResults
+                      const newBulkCardResults = bulkCardResults.map((card) => {
+                        // if card.cardName is in variant.name.lower case, then change the selectedVariant
+                        if (card.cardName.toLowerCase() === variant.name.toLowerCase()) {
+                          return {
+                            ...card,
+                            selectedVariant: variant,
+                          };
+                        } else {
+                          return card;
+                        }
+                      });
+                      setBulkCardResults(newBulkCardResults);
 
                       setOpen(false);
                     }}

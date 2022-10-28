@@ -14,7 +14,7 @@ export default function BulkSearchResultsInfo({numResults}) {
   const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
   const expectedBulkCardCount = useAtomValue(expectedBulkCardCountAtom);
   const [selectedCatalogRowsPrice, setSelectedCatalogRowsPrice] = useAtom(selectedCatalogRowsPriceAtom);
-  const bulkCardResults = useAtomValue(bulkCardResultsAtom);
+  const [bulkCardResults, setBulkCardResults] = useAtom(bulkCardResultsAtom);
 
 // -------------------------------
   const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
@@ -44,7 +44,7 @@ export default function BulkSearchResultsInfo({numResults}) {
           <div className="text-xs md:text-sm">{numResults} of {expectedBulkCardCount} cards found</div>
           <div className="text-xs md:text-sm">{selectedBulkInfo.numCardsSelected} cards selected</div>
           {/* round the price of selected to 2 decimals */}
-          <div className="text-xs md:text-sm">Price of selected: ${selectedBulkInfo.priceOfSelected.toFixed(2)}</div>
+          <div className="text-xs md:text-sm">Price of selected: ${selectedBulkInfo && parseFloat(selectedBulkInfo.priceOfSelected).toFixed(2)}</div>
            {/* Select all button  */}
            <button className="btn bg-cyan-200"
             onClick={() => {
@@ -53,6 +53,13 @@ export default function BulkSearchResultsInfo({numResults}) {
            >
             log selectedCatalogRows
            </button>
+           <button className="btn bg-indigo-200"
+            onClick={() => {
+              console.log(bulkCardResults);
+            }}
+            >
+            log bulkCardResults
+            </button>
            <button className="btn-small"
             onClick={() => {
               // if length of selectedCatalogRows is equal to length of bulkCardResults, then deselect all

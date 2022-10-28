@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useAtom, useSetAtom } from 'jotai'
 import { 
     bulkCardResultsAtom,
@@ -16,9 +16,7 @@ export default function BulkCatalogView() {
     const [bulkCardResults, setBulkCardResults] = useAtom(bulkCardResultsAtom);
     const setExpectedBulkCardCount = useSetAtom(expectedBulkCardCountAtom);
     const setMissingCardNames = useSetAtom(missingCardNamesAtom);
-    const setSelectedCatalogRows = useSetAtom(selectedCatalogRowsAtom);
-    const setSelectedCatalogRowsPrice = useSetAtom(selectedCatalogRowsPriceAtom);
-    const [selectedBulkInfo, setSelectedBulkInfo] = useAtom(selectedBulkInfoAtom);
+    const [selectedCatalogRows, setSelectedCatalogRows] = useAtom(selectedCatalogRowsAtom);
 
     const handleReset = () => {
         setBulkCardResults(null);
@@ -26,6 +24,20 @@ export default function BulkCatalogView() {
         setMissingCardNames([]);
         setSelectedCatalogRows([]);
     }
+
+    useEffect(() => {
+        // every time we update bulkCardResults we need to update the selectedCatalogRows
+
+        // for every card in selectedCatalogRows, make sure is matches the info in bulkCardResults
+        setSelectedCatalogRows(selectedCatalogRows.map((row) => {
+            // find the card in bulkCardResults that matches the cardName
+            const card = bulkCardResults.find((card) => card.cardName === row.cardName);
+            // if the card is not found, return the row
+            if (!card) return row;
+            // if the card is found, return the card
+            return card;
+        }));
+    }, [bulkCardResults]);
 
   return (
     <div className="flex flex-col">

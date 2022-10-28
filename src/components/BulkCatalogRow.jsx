@@ -41,14 +41,12 @@ export default function BulkCatalogRow({ card }) {
   const toggleSelectCard = () => {
     // if the row is selected, remove it from the selectedCatalogRows
     if (rowSelected) {
-      console.log("row was already selected, removing it from selectedCatalogRows");
       setSelectedCatalogRows(
         selectedCatalogRows.filter((row) => row.cardName !== card.cardName)
       );
     }
     // if the row is not selected, add it to the selectedCatalogRows
     else {
-      console.log("adding card to selectedCatalogRows");
       setSelectedCatalogRows([...selectedCatalogRows, card]);
     }
   };
@@ -63,12 +61,9 @@ export default function BulkCatalogRow({ card }) {
       {/* Modal */}
       {open && (
         <VariantSelectorModal
-          cardVariants={card.variants}
-          selectedVariant={card.selectedVariant}
-          setSelectedVariant={() => {console.log("setSelectedVariant")}}
+          card={card}
           open={open}
           setOpen={setOpen}
-          isSelected={false} // change this
         />
       )}
       {card.selectedVariant && (
