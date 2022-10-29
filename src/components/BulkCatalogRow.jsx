@@ -61,99 +61,7 @@ export default function BulkCatalogRow({ card }) {
       )}
       {card.selectedVariant && (
         <div>
-          {/* SMALL LAYOUT */}
-          {/* center everything in a column */}
-          <div className="flex flex-col items-center sm:hidden hover:bg-darkerBackground rounded-md p-5">
-            {/* Create a card that overlays the bottom 1/4 of the image to show its price */}
-            <div className="relative w-7/12">
-              <img
-                className="rounded-md w-full"
-                src={card.selectedVariant.image}
-                alt={card.name}
-              />
-              {/* Card Details */}
-              <div className="absolute bottom-0 left-0 w-full h-1/3 bg-black bg-opacity-90 rounded-b-md">
-                <div className="flex flex-col justify-center h-full p-2">
-                  {/* Card Info */}
-                  <div className="grid grid-cols-12">
-                    <div className="col-span-8 ml-1">
-                      {/* the card names can be long, make sure they don't overflow the column or span multiple lines */}
-
-                      <div className="text-sm font-bold truncate overflow-ellipsis overflow-hidden">
-                        {card.selectedVariant.name}
-                      </div>
-                      <div className="text-xs truncate overflow-ellipsis overflow-hidden">
-                        {card.selectedVariant.set}
-                      </div>
-
-                      <div className="text-xs">
-                        {card.selectedVariant.website}
-                      </div>
-
-                      {/* Button to open the modal for changing the selectedVariant */}
-
-                      {/* Button to open modal to switch selectedVariant */}
-                      <button
-                        className="text-primary text-xs font-bold underline"
-                        onClick={handleClick}
-                      >
-                        Other versions
-                      </button>
-                    </div>
-                    <div className="col-span-1" />
-                    <div className="col-span-3 text-end">
-                      <div className="text-sm font-bold">
-                        ${card.selectedVariant.price}
-                      </div>
-
-                      <div className="text-xs font-bold">
-                        {card.selectedVariant.condition}
-                      </div>
-                      {card.selectedVariant.foil && (
-                        <div className="text-xs font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
-                          Foil
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer with Buy button */}
-            <div className="flex flex-row w-7/12 items-center">
-              {/* Selector */}
-              <div className="mr-auto flex flex-row">
-                <div className="mr-1">Select</div>
-                {/* Selector Checkbox */}
-                <div className="col-span-1 flex justify-center items-center accent-primary">
-                  <input
-                    type="checkbox"
-                    checked={
-                      // if the card is in selectedCatalogRows, it is selected
-                      rowSelected
-                    }
-                    onChange={toggleSelectCard}
-                  />
-                </div>
-              </div>
-              {/* Buy Button */}
-              <div>
-                <button
-                  className="bg-primary text-white font-bold py-2 px-4 rounded mt-auto"
-                  onClick={() => {
-                    //open selectedVariant.link in a new tab
-                    window.open(selectedVariant.link, '_blank');
-                  }}
-                >
-                  Buy
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* SM + LAYOUT */}
-          <div className="hidden sm:flex sm:flex-col p-2 hover:backdrop-brightness-75 rounded-md">
+          <div className="flex flex-col p-2 hover:backdrop-brightness-75 rounded-md">
             {/* invisible box that is the background of the children elements, if it's clicked, toggleSelectCard */}
             <div
               className="grid grid-cols-12"
@@ -164,71 +72,71 @@ export default function BulkCatalogRow({ card }) {
                 }
               }}
             >
-              {/* Selector Checkbox */}
-              <div className="col-span-1 flex justify-center items-center accent-primary"
-                // we want to be able to click anywhere in the col to toggleSelectCard
-                onClick={toggleSelectCard}
-              >
-                <input
-                  type="checkbox"
-                  checked={rowSelected}
-                  onChange={toggleSelectCard}
+              <div className="col-span-3 relative">
+                {/* Image */}
+                <img
+                  src={card.selectedVariant.image}
+                  alt="card"
+                  className="w-24 rounded-md h-fit"
+                  onClick={toggleSelectCard}
                 />
+                {/* we want the selector to hover over the top left corner for the image */}
+                {/* Selector Checkbox */}
+                <div
+                  className="flex justify-center items-center accent-primary absolute top-0 left-0 w-6 h-6 rounded-md"
+                  // we want to be able to click anywhere in the col to toggleSelectCard
+                  onClick={toggleSelectCard}
+                >
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 rounded"
+                    checked={rowSelected}
+                    onChange={toggleSelectCard}
+                  />
+                </div>
               </div>
 
-              {/* Image */}
-              <img
-                src={card.selectedVariant.image}
-                alt="card"
-                className="sm:w-24 sm:rounded-md h-fit col-span-2"
-                onClick={toggleSelectCard}
-              />
               {/* Card Details col 1 */}
-              <div className="flex flex-col p-2 col-span-5">
+              <div className="flex flex-col p-2 col-span-6 sm:col-span-5">
                 {/* Card Info */}
-                <div className="flex flex-col"
-                  onClick={toggleSelectCard}
-                  >
-                <div className="text-md font-bold">
-                  {card.selectedVariant.name}
-                </div>
-                <div className="text-sm">{card.selectedVariant.set}</div>
-                <div className="text-sm">{card.selectedVariant.website}</div>
+                <div className="flex flex-col" onClick={toggleSelectCard}>
+                  <div className="text-md font-bold">
+                    {card.selectedVariant.name}
+                  </div>
+                  <div className="text-sm font-medium">{card.selectedVariant.set}</div>
+                  <div className="text-xs">{card.selectedVariant.website}</div>
                 </div>
                 {/* Button to open modal to switch selectedVariant */}
                 <button
-                  className="btn-outlined-small mt-auto"
+                  className="btn-outlined-xsmall sm:btn-outlined-small mt-auto"
                   onClick={handleClick}
                 >
                   Other versions
                 </button>
               </div>
+
               {/* Card Details col 2 */}
-              {/* make this column go to the end of the parent flex row */}
-
-              <div className="flex flex-col ml-auto text-right p-2 col-span-4">
+              <div className="flex flex-col ml-auto text-right p-2 col-span-3 sm:col-span-4">
                 {/* Foil, Condition, Price */}
-                <div className="flex flex-col"
-                  onClick={toggleSelectCard}
-                  >
-                <div className="font-bold text-md">
-                  ${card.selectedVariant.price}
-                </div>
-
-                <div className="flex flex-row space-x-2 justify-end">
-                  {card.selectedVariant.foil && (
-                    <div className="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
-                      Foil
-                    </div>
-                  )}
-                  <div className="text-sm font-bold">
-                    {card.selectedVariant.condition}
+                <div className="flex flex-col" onClick={toggleSelectCard}>
+                  <div className="font-bold text-md">
+                    ${card.selectedVariant.price}
                   </div>
-                </div>
+
+                  <div className="flex flex-row space-x-2 justify-end">
+                    {card.selectedVariant.foil && (
+                      <div className="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+                        Foil
+                      </div>
+                    )}
+                    <div className="text-sm font-bold">
+                      {card.selectedVariant.condition}
+                    </div>
+                  </div>
                 </div>
                 {/* Buy button, goes to bottom of the col*/}
                 <button
-                  className="btn-small mt-auto z-10"
+                  className="btn-small mt-auto"
                   onClick={() => {
                     //open selectedVariant.link in a new tab
                     window.open(card.selectedVariant.link, '_blank');
@@ -237,6 +145,8 @@ export default function BulkCatalogRow({ card }) {
                   Buy
                 </button>
               </div>
+
+              {/* Botton row */}
             </div>
           </div>
         </div>
