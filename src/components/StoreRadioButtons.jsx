@@ -308,6 +308,26 @@ export default function StoreRadioButtons() {
           <label htmlFor="jeux3dragons">Jeux 3 Dragons</label>
         </div>
 
+        {/* MANAFORCE */}
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
+          <input
+            type="checkbox"
+            id="manaforce"
+            value="manaforce"
+            checked={selectedStores.includes('manaforce')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="manaforce">Manaforce</label>
+        </div>
+
         {/* MTG STRONGHOLD */}
         <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
