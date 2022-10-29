@@ -77,7 +77,7 @@ export default function BulkCatalogRow({ card }) {
                 <img
                   src={card.selectedVariant.image}
                   alt="card"
-                  className="w-24 rounded-md h-fit"
+                  className="w-24 rounded-md h-auto"
                   onClick={toggleSelectCard}
                 />
                 {/* we want the selector to hover over the top left corner for the image */}
