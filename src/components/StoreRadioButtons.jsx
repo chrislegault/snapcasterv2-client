@@ -25,6 +25,7 @@ export default function StoreRadioButtons() {
     'firstplayer',
     'manaforce',
     'orchardcity',
+    'bordercity',
   ];
   return (
     <div className=" rounded-md bg-gray-300 dark:bg-darkerBackground p-3 ">
@@ -47,6 +48,26 @@ export default function StoreRadioButtons() {
             }}
           />
           <label htmlFor="atlas">Atlas Collectables</label>
+        </div>
+
+        {/* BORDER CITY GAMES */}
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
+          <input
+            type="checkbox"
+            id="bordercity"
+            value="bordercity"
+            checked={selectedStores.includes('bordercity')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="bordercity">Border City Games</label>
         </div>
 
         {/* CONNECTION GAMES */}
