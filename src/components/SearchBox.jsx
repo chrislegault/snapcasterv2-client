@@ -5,81 +5,12 @@ import {
   hideWelcomeMessage,
   sortedByAtom,
   sortOrderAtom,
-  filteredSingleCardResults
+  filteredSingleCardResults,
 } from '../atoms';
 import axios from 'axios';
 import { sortResults } from '../utils';
 
 export default function SearchBox({ setSearchTerm }) {
-  const dummydata = [
-    {
-      id: 1,
-      name: 'Dockside Extortionist',
-      set: 'Core Set 2021',
-      price: 54.99,
-      image:
-        'https://cards.scryfall.io/png/front/5/7/571bc9eb-8d13-4008-86b5-2e348a326d58.png?1615499802',
-      store: '401 Games',
-      condition: 'NM',
-      link: 'https://store.401games.ca/pages/search-results?q=dockside+extortionist',
-    },
-    {
-      id: 2,
-      name: 'Dockside Extortionist',
-      set: 'Core Set 2021',
-      price: 54.99,
-      image:
-        'https://cards.scryfall.io/png/front/5/7/571bc9eb-8d13-4008-86b5-2e348a326d58.png?1615499802',
-      store: '401 Games',
-      condition: 'NM',
-      link: 'https://store.401games.ca/pages/search-results?q=dockside+extortionist',
-    },
-    {
-      id: 3,
-      name: 'Dockside Extortionist',
-      set: 'Core Set 2021',
-      price: 54.99,
-      image:
-        'https://cards.scryfall.io/png/front/5/7/571bc9eb-8d13-4008-86b5-2e348a326d58.png?1615499802',
-      store: '401 Games',
-      condition: 'NM',
-      link: 'https://store.401games.ca/pages/search-results?q=dockside+extortionist',
-    },
-    {
-      id: 4,
-      name: 'Dockside Extortionist',
-      set: 'Core Set 2021',
-      price: 54.99,
-      image:
-        'https://cards.scryfall.io/png/front/5/7/571bc9eb-8d13-4008-86b5-2e348a326d58.png?1615499802',
-      store: '401 Games',
-      condition: 'NM',
-      link: 'https://store.401games.ca/pages/search-results?q=dockside+extortionist',
-    },
-    {
-      id: 5,
-      name: 'Dockside Extortionist',
-      set: 'Core Set 2021',
-      price: 54.99,
-      image:
-        'https://cards.scryfall.io/png/front/5/7/571bc9eb-8d13-4008-86b5-2e348a326d58.png?1615499802',
-      store: '401 Games',
-      condition: 'NM',
-      link: 'https://store.401games.ca/pages/search-results?q=dockside+extortionist',
-    },
-    {
-      id: 6,
-      name: 'Dockside Extortionist',
-      set: 'Core Set 2021',
-      price: 54.99,
-      image:
-        'https://cards.scryfall.io/png/front/5/7/571bc9eb-8d13-4008-86b5-2e348a326d58.png?1615499802',
-      store: '401 Games',
-      condition: 'NM',
-      link: 'https://store.401games.ca/pages/search-results?q=dockside+extortionist',
-    },
-  ];
-
   const sortedBy = useAtomValue(sortedByAtom);
   const sortOrder = useAtomValue(sortOrderAtom);
 
@@ -87,7 +18,9 @@ export default function SearchBox({ setSearchTerm }) {
   const [results, setResults] = useAtom(singleCardResults);
   const [hideWelcome, setHideWelcome] = useAtom(hideWelcomeMessage);
   const [loading, setLoading] = React.useState(false);
-  const [filteredResults, setFilteredResults] = useAtom(filteredSingleCardResults);
+  const [filteredResults, setFilteredResults] = useAtom(
+    filteredSingleCardResults,
+  );
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -97,9 +30,7 @@ export default function SearchBox({ setSearchTerm }) {
     axios
       .post(`${import.meta.env.VITE_API_URI}/search/single/`, {
         cardName,
-        websites: [
-          'all',
-        ],
+        websites: ['all'],
       })
       .then(res => {
         // Set the raw results to the atom
