@@ -21,7 +21,8 @@ export default function StoreRadioButtons() {
     'houseofcards',
     'magicstronghold',
     'topdeckhero',
-  ]
+    'enterthebattlefield',
+  ];
   return (
     <div className=" rounded-md bg-gray-300 dark:bg-darkerBackground p-3 ">
       <div className="grid grid-cols-1 xs:grid-cols-2 space-y-3 text-sm">
@@ -63,6 +64,28 @@ export default function StoreRadioButtons() {
             }}
           />
           <label htmlFor="connectiongames">The Connection Games</label>
+        </div>
+
+        {/* ENTER THE BATTLEFIELD GAMES */}
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
+          <input
+            type="checkbox"
+            id="enterthebattlefield"
+            value="enterthebattlefield"
+            checked={selectedStores.includes('enterthebattlefield')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="enterthebattlefield">
+            Enter the Battlefield Newmarket
+          </label>
         </div>
 
         {/* EVERYTHING GAMES */}
@@ -372,12 +395,11 @@ export default function StoreRadioButtons() {
           onClick={() => {
             // if all stores are selected, deselect all
             if (selectedStores.length === storeList.length) {
-            setSelectedStores([]);
+              setSelectedStores([]);
             } else {
               // else select all
               setSelectedStores(storeList);
             }
-
           }}
         >
           Select All
