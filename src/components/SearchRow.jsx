@@ -26,7 +26,7 @@ const websiteLogos = {
   enterthebattlefield: 'https://i.ibb.co/hdnH9fY/enterthebattlefield.png',
   manaforce: 'https://d1rw89lz12ur5s.cloudfront.net/store/manaforce/e58b802e2e334d17aacfbf9954a5400e/large/manaforce%20logo%20attempt%204.png',
   firstplayer: 'https://d1rw89lz12ur5s.cloudfront.net/store/firstplayer/ab9075a71d2949aa8dd1e032f54cf7d8/large/g901%20medium.png',
-
+  orchardcity: 'https://d1rw89lz12ur5s.cloudfront.net/store/orchardcitygames/eb6cb32f84b34b5cbb1c025fc41c9821/large/logo_v1.png',
 };
 
 export default function SearchRow({ cardData }) {
