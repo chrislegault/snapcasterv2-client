@@ -24,7 +24,9 @@ const websiteLogos = {
   exorgames: 'https://cdn.shopify.com/s/files/1/0467/3083/8169/files/Untitled-2-01.png?v=1613706669',
   gameknight: 'https://cdn.shopify.com/s/files/1/0367/8204/7276/files/GK-Logo-Full-Text-Below-1-768x603.png?v=1618430878',
   enterthebattlefield: 'https://i.ibb.co/hdnH9fY/enterthebattlefield.png',
-  manaforce: 'https://d1rw89lz12ur5s.cloudfront.net/store/manaforce/e58b802e2e334d17aacfbf9954a5400e/large/manaforce%20logo%20attempt%204.png'
+  manaforce: 'https://d1rw89lz12ur5s.cloudfront.net/store/manaforce/e58b802e2e334d17aacfbf9954a5400e/large/manaforce%20logo%20attempt%204.png',
+  firstplayer: 'https://d1rw89lz12ur5s.cloudfront.net/store/firstplayer/ab9075a71d2949aa8dd1e032f54cf7d8/large/g901%20medium.png',
+
 };
 
 export default function SearchRow({ cardData }) {

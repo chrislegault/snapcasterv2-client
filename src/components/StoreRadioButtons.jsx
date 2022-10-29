@@ -22,6 +22,8 @@ export default function StoreRadioButtons() {
     'magicstronghold',
     'topdeckhero',
     'enterthebattlefield',
+    'firstplayer',
+    'manaforce',
   ];
   return (
     <div className=" rounded-md bg-gray-300 dark:bg-darkerBackground p-3 ">
@@ -146,6 +148,26 @@ export default function StoreRadioButtons() {
             }}
           />
           <label htmlFor="facetoface">Face to Face Games</label>
+        </div>
+
+        {/* FIRST PLAYER */}
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
+          <input
+            type="checkbox"
+            id="firstplayer"
+            value="firstplayer"
+            checked={selectedStores.includes('firstplayer')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="firstplayer">FirstPlayer</label>
         </div>
 
         {/* 401 GAMES */}
