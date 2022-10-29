@@ -6,6 +6,10 @@ module.exports = {
   ],  
   theme: {
     extend: {
+      screens: {
+        // => @media (min-width:390 px)
+        "xs": "390px",
+      },
       colors: {
         darkBackground: '#252630',
         darkerBackground: '#16161C',
@@ -13,7 +17,8 @@ module.exports = {
       },
       fontFamily: {
         // Titillium Web
-        sans: ['Titillium Web', 'sans-serif'],
+        // sans: ['Titillium Web', 'sans-serif'],
+        sans: ['Roboto', 'sans-serif'],
       },
       variants: {
         extend: {
