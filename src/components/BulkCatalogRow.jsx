@@ -96,18 +96,18 @@ export default function BulkCatalogRow({ card }) {
               </div>
 
               {/* Card Details col 1 */}
-              <div className="flex flex-col p-2 col-span-5">
+              <div className="flex flex-col p-2 col-span-6 sm:col-span-5">
                 {/* Card Info */}
                 <div className="flex flex-col" onClick={toggleSelectCard}>
                   <div className="text-md font-bold">
                     {card.selectedVariant.name}
                   </div>
-                  <div className="text-sm">{card.selectedVariant.set}</div>
-                  <div className="text-sm">{card.selectedVariant.website}</div>
+                  <div className="text-sm font-medium">{card.selectedVariant.set}</div>
+                  <div className="text-xs">{card.selectedVariant.website}</div>
                 </div>
                 {/* Button to open modal to switch selectedVariant */}
                 <button
-                  className="btn-outlined-small mt-auto"
+                  className="btn-outlined-xsmall mt-auto"
                   onClick={handleClick}
                 >
                   Other versions
@@ -115,7 +115,7 @@ export default function BulkCatalogRow({ card }) {
               </div>
 
               {/* Card Details col 2 */}
-              <div className="flex flex-col ml-auto text-right p-2 col-span-4">
+              <div className="flex flex-col ml-auto text-right p-2 col-span-3 sm:col-span-4">
                 {/* Foil, Condition, Price */}
                 <div className="flex flex-col" onClick={toggleSelectCard}>
                   <div className="font-bold text-md">
@@ -135,7 +135,7 @@ export default function BulkCatalogRow({ card }) {
                 </div>
                 {/* Buy button, goes to bottom of the col*/}
                 <button
-                  className="btn-small mt-auto z-10"
+                  className="btn-small mt-auto"
                   onClick={() => {
                     //open selectedVariant.link in a new tab
                     window.open(card.selectedVariant.link, '_blank');

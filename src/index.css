@@ -12,4 +12,7 @@
     .btn-outlined-small {
         @apply border-2 border-primary hover:bg-primary hover:bg-opacity-25 active:brightness-90 p-1 rounded-md font-bold w-auto text-sm;
     }
+    .btn-outlined-xsmall {
+        @apply border-2 border-primary hover:bg-primary hover:bg-opacity-25 active:brightness-90 p-0 rounded-md font-medium w-auto text-xs;
+    }
 }
