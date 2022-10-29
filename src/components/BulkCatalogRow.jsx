@@ -77,7 +77,7 @@ export default function BulkCatalogRow({ card }) {
                 <img
                   src={card.selectedVariant.image}
                   alt="card"
-                  className="w-24 sm:rounded-md h-fit"
+                  className="w-24 rounded-md h-fit"
                   onClick={toggleSelectCard}
                 />
                 {/* we want the selector to hover over the top left corner for the image */}
@@ -89,6 +89,7 @@ export default function BulkCatalogRow({ card }) {
                 >
                   <input
                     type="checkbox"
+                    className="w-4 h-4 rounded"
                     checked={rowSelected}
                     onChange={toggleSelectCard}
                   />
@@ -107,7 +108,7 @@ export default function BulkCatalogRow({ card }) {
                 </div>
                 {/* Button to open modal to switch selectedVariant */}
                 <button
-                  className="btn-outlined-xsmall mt-auto"
+                  className="btn-outlined-xsmall sm:btn-outlined-small mt-auto"
                   onClick={handleClick}
                 >
                   Other versions
