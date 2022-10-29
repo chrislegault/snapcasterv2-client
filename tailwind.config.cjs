@@ -11,6 +11,10 @@ module.exports = {
         darkerBackground: '#16161C',
         primary: '#9C1FE9',
       },
+      fontFamily: {
+        // Titillium Web
+        sans: ['Titillium Web', 'sans-serif'],
+      },
       variants: {
         extend: {
           backgroundColor: ['active'],
