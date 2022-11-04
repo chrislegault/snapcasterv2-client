@@ -1,13 +1,30 @@
-import React from 'react'
-
+import React from 'react';
+import SealedSearchBox from '../components/SealedSearchBox';
+import { useAtomValue } from 'jotai';
+import { filteredSealedResultsAtom, sealedSearchInfoAtom } from '../atoms';
+import SealedCatalogView from '../components/SealedCatalogView';
+import SealedSearchInfo from '../components/SealedSearchInfo';
 export default function SealedSearch() {
+  const filteredResults = useAtomValue(filteredSealedResultsAtom);
+  const sealedSearchInfo = useAtomValue(sealedSearchInfoAtom);
   return (
     <>
-        {/* coming soon card */}
+      <div className="max-w-xl mx-auto">
+        <SealedSearchBox />
+        <div className="p-2" />
+        {filteredResults && (
+          <>
+            {sealedSearchInfo && (
+              <SealedSearchInfo
+                numResults={filteredResults.length}
+                searchTerm={sealedSearchInfo.searchTerm}
+              />
+            )}
 
-                <h1 className="text-2xl font-bold text-center mt-5">coming soon</h1>
-
-
+            <SealedCatalogView data={filteredResults} />
+          </>
+        )}
+      </div>
     </>
-  )
+  );
 }

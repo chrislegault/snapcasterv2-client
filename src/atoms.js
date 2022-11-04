@@ -30,3 +30,7 @@ export const selectedBulkInfoAtom = atom({
 });
 
 export const foilFilterAtom = atom(false);
+export const sealedResultsAtom = atom(null);
+export const filteredSealedResultsAtom = atom(null);
+
+export const sealedSearchInfoAtom = atom(null);
