@@ -1,6 +1,5 @@
 import React from 'react';
-import { useAtomValue } from 'jotai';
-import { listViewAtom } from '../atoms';
+
 
 const websiteLogos = {
   gauntlet:

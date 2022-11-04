@@ -11,8 +11,9 @@ export default function MultiSearch() {
   return (
     <>
      <div className="max-w-xl mx-auto">    
-       {/* if bulkCardResults is not null, show BulkCatalogView, else show MultiSearchForm */}
-      {bulkCardResults ? <BulkCatalogView /> : <MultiSearchForm />}
-    </div></>
+        {/* if bulkCardResults is not null, show BulkCatalogView, else show MultiSearchForm */}
+        {bulkCardResults ? <BulkCatalogView /> : <MultiSearchForm />}
+      </div>
+    </>
   )
 }
