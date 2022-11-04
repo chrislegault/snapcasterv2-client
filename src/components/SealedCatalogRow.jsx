@@ -54,6 +54,9 @@ export default function SealedCatalogRow({ product }) {
         <div className="col-span-5 mt-2">
           <div className="flex flex-col">
             <div className="text-md font-bold">{product.name}</div>
+            <div className="text-sm dark:text-gray-400 ">
+              {product.language}
+            </div>
             <img
               src={websiteLogos[product.website]}
               alt={product.website}
@@ -63,11 +66,11 @@ export default function SealedCatalogRow({ product }) {
         </div>
         <div className="col-span-4 mt-2">
           <div className="flex flex-col items-end">
+            <div className="text-lg font-bold">{product.price}</div>
             {/* if product.stock >= 1, show the stock, otherwise show a green checkmark */}
-            <div className="text-sm font-bold">
+            <div className="text-xs font-bold">
               In stock: {product.stock >= 1 ? product.stock : '✅'}
             </div>
-            <div className="text-lg font-bold">{product.price}</div>
             <button
               className="btn-small mt-2"
               // onClick - open product.link in a new tab
