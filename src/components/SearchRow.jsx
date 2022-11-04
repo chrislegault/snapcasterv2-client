@@ -13,7 +13,7 @@ const websiteLogos = {
   everythinggames: 'https://cdn.shopify.com/s/files/1/0618/8905/2856/files/Header_76747500-dd40-4d94-8016-a1d21282e094_large.png?v=1650298823',
   magicstronghold: 'https://magicstronghold-images.s3.amazonaws.com/customizations/logo.png',
   facetoface: 'https://i.ibb.co/W2bPWdK/logo-colored-1.png',
-  connectiongames: 'https://i.ibb.co/vBX8vQ0/connectiongames-inverted.png',
+  connectiongames: 'https://i.ibb.co/Qp1kqrB/connectiongames-inverted.png',
   topdeckhero: 'https://d1rw89lz12ur5s.cloudfront.net/store/topdeckhero/1fdf9e60cbd911e7aefa7116e0c551f9/large/topdeckhero.png',
   jeux3dragons: 'https://d1rw89lz12ur5s.cloudfront.net/store/jeux3dragons/ef00baaca6ad43cfb51939c1af74c2c7/large/logo.png',
   sequencegaming: 'https://i.ibb.co/C2jXrmD/sequence-no-bg-inverted.png',

@@ -13,7 +13,7 @@ const websiteLogos = {
   magicstronghold:
     'https://magicstronghold-images.s3.amazonaws.com/customizations/logo.png',
   facetoface: 'https://i.ibb.co/W2bPWdK/logo-colored-1.png',
-  connectiongames: 'https://i.ibb.co/vBX8vQ0/connectiongames-inverted.png',
+  connectiongames: 'https://i.ibb.co/Qp1kqrB/connectiongames-inverted.png',
   topdeckhero:
     'https://d1rw89lz12ur5s.cloudfront.net/store/topdeckhero/1fdf9e60cbd911e7aefa7116e0c551f9/large/topdeckhero.png',
   jeux3dragons:
