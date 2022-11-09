@@ -59,11 +59,12 @@ export default function SealedSearchInfo({ numResults, searchTerm }) {
     <div className="bg-gray-100 dark:bg-darkerBackground rounded-md p-1 md:p-3">
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm md:text-md">
-        <div className="m-2 col-span-3 bg-red-500 bg-opacity-10 p-2">
-            Update November 4
-            <br />
-            This page is still under construction. I've added Gauntlet Games and 401 Games
-            to test the layout. I will be adding more stores in the next week.
+        <div className="m-2 col-span-3 bg-red-500 bg-opacity-10 p-3">
+            {/* Update Header */}
+          <div className="text-center dark:text-red-200 font-bold">
+            <h3>Update November 9</h3>
+          </div>
+            This page is currently under construction and adding more sites daily. More filtering options will be added once all sites are supported.
         </div>
         <div className="mx-2 col-span-3">
           {numResults} results for "{searchTerm}"
