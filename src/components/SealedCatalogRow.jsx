@@ -6,7 +6,7 @@ const websiteLogos = {
   houseOfCards: 'https://i.ibb.co/qnytc5Q/house-of-cards-logo.png',
   kanatacg: 'https://i.ibb.co/hm3qKWc/wizardstower-removebg-preview.png',
   fusion:
-    'https://cc-client-assets.s3.amazonaws.com/store/fusiongamingonline/e85497a0877911e79bd1b58786c09dea/large/fusiongamingonline_logo2.png',
+    'https://i.ibb.co/GkKmry9/fusiongaminglogo.png',
   four01: 'https://i.ibb.co/h9x3Ksb/401games.png',
   everythinggames:
     'https://cdn.shopify.com/s/files/1/0618/8905/2856/files/Header_76747500-dd40-4d94-8016-a1d21282e094_large.png?v=1650298823',
