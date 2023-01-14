@@ -48,7 +48,7 @@ export default function StoreRadioButtons() {
               }
             }}
           />
-          <label htmlFor="aethervault">Aethervault</label>
+          <label htmlFor="aethervault">Aether Vault Games</label>
         </div>
         
         {/* ATLAS */}
