@@ -10,9 +10,10 @@ export default function Home() {
     <>
       <div className="max-w-xl mx-auto">
         {!hideWelcomeMessageValue && <Header />}
-        <CalendarHeatmap />
 
         <SingleCardSearch />
+        {!hideWelcomeMessageValue && <CalendarHeatmap />}
+
       </div>
     </>
   );

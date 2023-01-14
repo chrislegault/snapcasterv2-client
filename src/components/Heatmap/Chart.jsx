@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import moment from 'moment/moment';
 import * as d3 from 'd3';
 import './calendar-heatmap.css';
 
-export default function Chart({ data }) {
-  var width = 750;
+export default function Chart({ data, total }) {
+  console.log(data)
+  var width = 690;
   var height = 150;
   var selector = '.heatmap-container';
   var SQUARE_LENGTH = 11;
@@ -28,11 +29,14 @@ export default function Chart({ data }) {
         }),
     ])
     .range(colorRange);
-
+ 
   const countForDate = d => {
-    var count = data.find(function (element) {
-      return moment(d).isSame(element.date, 'day');
-    }).count;
+    var count = 0;
+    data.forEach(function (e) {
+      if (moment(e.date).isSame(d, 'day')) {
+        count = e.count;
+      }
+    });
     return count;
   };
 
@@ -68,7 +72,18 @@ export default function Chart({ data }) {
       .attr('width', width)
       .attr('class', 'calendar-heatmap')
       .attr('height', height)
-      .style('padding', '36px');
+      .style('padding', '0px');
+
+    const tooltip = d3.select(selector)
+    .append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0)
+    // have tooltip at the cursor position
+    .style('position', 'absolute')
+    .style('pointer-events', 'none')
+    .style('width', '200px');
+
+
 
     var dayRects = svg.selectAll('.day-cell').data(dateRange); //  array of days for the last yr
     var enterSelection = dayRects
@@ -91,17 +106,86 @@ export default function Chart({ data }) {
       })
       .attr('y', function (d, i) {
         return (
-          MONTH_LABEL_PADDING +
+          MONTH_LABEL_PADDING + 20 +
           formatWeekday(d.getDay()) * (SQUARE_LENGTH + SQUARE_PADDING)
         );
-      });
+      })
+      // on mouseover, show the tooltip
+      .on('mouseenter', function (e, d) {
+        tooltip
+          .transition()
+          .duration(200)
+          .style('opacity', 0.9);
+        tooltip
+        // display tooltip at the mouse position
+          .html(
+            `<div class="day-cell-tooltip"><div>${moment(d).format('MMM D, YYYY')}</div>
+            <div class="tooltip-count">${countForDate(d)} searches</div></div>` 
+          )
+          .style('left', e.pageX -175 + 'px')
+          .style('top', e.pageY - 195 + 'px');
+      })
+      // on mouseout, hide the tooltip 
+      .on('mouseout', function (d) {
+        tooltip
+          .transition()
+          .duration(500)
+          .style('opacity', 0);
+      }); 
+
 
     dayRects.exit().remove();
+    // draw month labels across the top, we only want the first three letters of the month
+    var monthLabels = svg.selectAll('.month').data(
+      d3.timeMonths(
+        moment(dateRange[0]).startOf('month').toDate(),
+        moment(dateRange[dateRange.length - 1]).endOf('month').toDate()
+      )
+    );
+    
+    
+    monthLabels
+      .enter()
+      .append('text')
+      .attr('class', 'month')
+      .text(function (d) {
+        return moment(d).format('MMM');
+      }
+      )
+      .style('fill', '#FFF')
+      .attr('font-size', '10px')
+      .attr('x', function (d, i) {
+        var cellDate = moment(d);
+        var result =
+          cellDate.week() -
+          firstDate.week() +
+          firstDate.weeksInYear() *
+            (cellDate.weekYear() - firstDate.weekYear());
+        return result * (SQUARE_LENGTH + SQUARE_PADDING);
+      }
+      )
+      .attr('y', MONTH_LABEL_PADDING+20 / 2)
+      .attr('text-anchor', 'middle') 
+      .append('g')
+      
+
+    monthLabels.exit().remove();
+    // add a label for the total number of searches at the bottom center of the chart
+    var totalSearches = svg
+      .append('text')
+      .attr('class', 'total-searches')
+      .text('Total Searches: ' + total)
+      .style('fill', '#FFF')
+      .attr('font-size', '10px')
+      .attr('x', width / 2)
+      .attr('y', height - 20)
+      .attr('text-anchor', 'middle');
+
   };
 
   return (
     <div className="heatmap-container">
       <div className="calendar-heatmap">{chart()}</div>
     </div>
-  );
+  ); 
 }
