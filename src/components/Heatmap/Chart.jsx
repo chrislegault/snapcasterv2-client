@@ -93,6 +93,10 @@ export default function Chart({ data, total }) {
       .attr('width', SQUARE_LENGTH)
       .attr('height', SQUARE_LENGTH)
       .attr('fill', function (d) {
+        // if countForDate is 0, return dark gray
+        if (countForDate(d) === 0) {
+          return '#333';
+        }
         return color(countForDate(d));
       })
       .attr('x', function (d, i) {
