@@ -71,17 +71,9 @@ export default function BulkSearchResultsInfo({ numResults }) {
             onClick={() => {
               // if length of selectedCatalogRows is equal to length of bulkCardResults, then deselect all
               if (selectedCatalogRows.length === bulkCardResults.length) {
-                console.log('clearing all');
-                console.log(
-                  'SelectedCatalogRows before clearing: ',
-                  selectedCatalogRows,
-                );
-                // go through each row in bulkCardResults and set selected to false
-
-                setSelectedCatalogRows([]);
+                  setSelectedCatalogRows([]);
                 //
               } else {
-                console.log('selecting all');
 
                 setSelectedCatalogRows(
                   bulkCardResults.map(row => {
@@ -90,10 +82,7 @@ export default function BulkSearchResultsInfo({ numResults }) {
                     };
                   }),
                 );
-                console.log(
-                  'SelectedCatalogRows after selecting all: ',
-                  selectedCatalogRows,
-                );
+
               }
             }}
           >

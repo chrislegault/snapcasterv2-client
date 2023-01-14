@@ -77,7 +77,6 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
         conditionFilterList.includes(result.condition),
       );
     }
-    console.log('newResults: ', newResults);
     setFilteredResults(newResults);
   };
 
