@@ -34,3 +34,13 @@ export const sealedResultsAtom = atom(null);
 export const filteredSealedResultsAtom = atom(null);
 
 export const sealedSearchInfoAtom = atom(null);
+
+export const conditionFilterListAtom = atom([
+    'NM',
+    'LP',
+    'MP',
+    'PL', // same as MP
+    'HP',
+    'DMG',
+    'SCN' // scanned
+  ]);
