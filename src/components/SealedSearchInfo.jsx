@@ -62,9 +62,9 @@ export default function SealedSearchInfo({ numResults, searchTerm }) {
         <div className="m-2 col-span-3 bg-red-500 bg-opacity-10 p-3">
             {/* Update Header */}
           <div className="text-center dark:text-red-200 font-bold">
-            <h3>Update November 9</h3>
+            <h3>Update Jan 14, 2023</h3>
           </div>
-            This page is currently under construction and adding more sites daily. More filtering options will be added once all sites are supported.
+            This page is currently under construction. Not all websites are supported yet.
         </div>
         <div className="mx-2 col-span-3">
           {numResults} results for "{searchTerm}"
