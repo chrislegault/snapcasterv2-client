@@ -26,10 +26,31 @@ export default function StoreRadioButtons() {
     'manaforce',
     'orchardcity',
     'bordercity',
+    'aethervault',
   ];
   return (
     <div className=" rounded-md bg-gray-300 dark:bg-darkerBackground p-3 ">
       <div className="grid grid-cols-1 xs:grid-cols-2 space-y-3 text-sm">
+        {/* AETHERVAULT */}
+        <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
+          <input
+            type="checkbox"
+            id="aethervault"
+            value="aethervault"
+            checked={selectedStores.includes('aethervault')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="aethervault">Aethervault</label>
+        </div>
+        
         {/* ATLAS */}
         <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
           <input
