@@ -6,10 +6,10 @@ export default function ResponsiveNav() {
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
   return (
-    <nav className="bg-gray-400 px-2 sm:px-4 py-2.5 dark:bg-darkerBackground">
+    <nav className="bg-gray-400 px-2 md:px-4 py-1 dark:bg-darkerBackground">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to='/' className="flex items-center">
-          <img src="logo.png" className="mr-3 h-6 sm:h-9" alt="snapcaster logo" />
+          <img src="logo.png" className="mr-3 h-6 md:h-7" alt="snapcaster logo" />
         </Link>
         <button
           data-collapse-toggle="navbar-default"
@@ -42,7 +42,7 @@ export default function ResponsiveNav() {
             <li>
               <Link
                 to="/"
-                className="block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="nav-link"
               >
                 Home
               </Link>{' '}
@@ -51,7 +51,7 @@ export default function ResponsiveNav() {
             <li>
               <Link
                 to="/sealed-search"
-                className="block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="nav-link"
               >
                 Sealed Search
               </Link>
@@ -59,7 +59,7 @@ export default function ResponsiveNav() {
             <li>
               <Link
                 to='/multi-search'
-                className="block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="nav-link"
               >
                 Multi Search
               </Link>
@@ -67,16 +67,16 @@ export default function ResponsiveNav() {
             <li>
               <Link
                 to="/about"
-                className="block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="nav-link"
               >
                 About
               </Link>
             </li>
-            <li>
-              <div className="block py-2 pr-4 pl-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+            {/* <li>
+              <div className="nav-link">
               <DarkModeToggle />
               </div>
-            </li>
+            </li> */}
    
           </ul>
         </div>
