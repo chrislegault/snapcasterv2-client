@@ -8,13 +8,13 @@ export default function Home() {
   const hideWelcomeMessageValue = useAtomValue(hideWelcomeMessage);
   return (
     <>
+      {!hideWelcomeMessageValue && <div className="max-w-xl mx-auto mt-12 sm:mt-16 md:mt-32">
+        <Header />
+        {/* <CalendarHeatmap /> */}
+      </div>}
       <div className="max-w-xl mx-auto">
-        {!hideWelcomeMessageValue && <Header />}
-
-        <SingleCardSearch />
-        {!hideWelcomeMessageValue && <CalendarHeatmap />}
-
-      </div>
+      <SingleCardSearch />
+    </div>
     </>
   );
 }

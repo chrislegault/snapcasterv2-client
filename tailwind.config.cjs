@@ -11,7 +11,7 @@ module.exports = {
         "xs": "390px",
       },
       colors: {
-        darkBackground: '#252630',
+        darkBackground: '#2C2C2C',
         darkerBackground: '#16161C',
         primary: '#9C1FE9',
       },

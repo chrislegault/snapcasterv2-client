@@ -104,7 +104,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
   return (
     <>
       {/* Background */}
-      <div className="bg-gray-100 dark:bg-darkerBackground rounded-md p-1 md:p-3">
+      <div className="bg-gray-100 dark:bg-darkerBackground rounded-md p-1 md:p-3 border-2 border-gray-700 ">
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm md:text-md">
           <div className="mx-2 col-span-3">
@@ -270,7 +270,7 @@ export default function SearchResultsInfo({ numResults, searchTerm }) {
             {/* when showMore is true, we display additional <select> components */}
             <div className="flex items-center">
               <button
-                className="bg-white dark:bg-gray-700 rounded-md border mx-1 text-sm p-1"
+                className="btn-outlined-xsmall"
                 onClick={toggleShowMore}
               >
                 {showMore ? 'Hide' : 'More'} filters
