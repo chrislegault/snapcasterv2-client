@@ -38,7 +38,7 @@ export default function ResponsiveNav() {
           className={`${isOpen ? '' : 'hidden'}  w-full md:block md:w-auto`}
           id="navbar-default"
         >
-          <ul className="flex flex-col p-4 mt-4 rounded-lg border border-gray-100 md:border-0 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium text-white">
+          <ul className="flex flex-col p-2 mt-4 rounded-lg border border-gray-100 md:border-0 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium text-white">
             <li>
               <Link
                 to="/"
