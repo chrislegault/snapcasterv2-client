@@ -27,6 +27,7 @@ export default function StoreRadioButtons() {
     'orchardcity',
     'bordercity',
     'aethervault',
+    ,'fantasyforged'
   ];
   return (
     <div className=" rounded-md bg-gray-300 dark:bg-darkerBackground p-3 ">
@@ -192,6 +193,27 @@ export default function StoreRadioButtons() {
           />
           <label htmlFor="facetoface">Face to Face Games</label>
         </div>
+
+                {/* FANTASY FORGED */}
+                <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">
+          <input
+            type="checkbox"
+            id="fantasyforged"
+            value="fantasyforged"
+            checked={selectedStores.includes('fantasyforged')}
+            onChange={e => {
+              if (e.target.checked) {
+                setSelectedStores([...selectedStores, e.target.value]);
+              } else {
+                setSelectedStores(
+                  selectedStores.filter(store => store !== e.target.value),
+                );
+              }
+            }}
+          />
+          <label htmlFor="facetoface">Fantasy Forged Games</label>
+        </div>
+        
 
         {/* FIRST PLAYER */}
         <div className="flex flex-row col-span-1 space-x-1 items-center accent-primary">

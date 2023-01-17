@@ -27,7 +27,8 @@ const websiteLogos = {
   firstplayer: 'https://d1rw89lz12ur5s.cloudfront.net/store/firstplayer/ab9075a71d2949aa8dd1e032f54cf7d8/large/g901%20medium.png',
   orchardcity: 'https://d1rw89lz12ur5s.cloudfront.net/store/orchardcitygames/eb6cb32f84b34b5cbb1c025fc41c9821/large/logo_v1.png',
   bordercity: 'https://i.ibb.co/cvNCbXx/Border-City-Games-Large-85873391-3559-47f7-939a-420461a0033f-201x-removebg-preview.png',
-  aethervault: 'https://d1rw89lz12ur5s.cloudfront.net/store/aethervaultgames/baa99644755e44c2a11d7bc20494e7b0/large/AetherVaultGames.png'
+  aethervault: 'https://d1rw89lz12ur5s.cloudfront.net/store/aethervaultgames/baa99644755e44c2a11d7bc20494e7b0/large/AetherVaultGames.png',
+  fantasyforged: 'https://cdn.shopify.com/s/files/1/0549/9876/1695/files/test_2_78e84d47-24dc-43f9-a89d-e94611e6672a_120x.png?v=1660519029',
 };
 
 export default function SearchRow({ cardData }) {
